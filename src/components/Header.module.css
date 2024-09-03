@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.utilityBar {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.875rem;
+}
+
+.utilityItem {
+  margin-left: 14px;
+  cursor: pointer;
+  position: relative;
+  color: #1d1d1d;
+}
+
+.utilityItem::before {
+  content: "|";
+  position: absolute;
+  left: -10px;
+  color: #ccc;
+}
+
+.utilityItem:first-child::before {
+  content: ""; /* 첫 번째 항목 앞의 막대기 제거 */
+}
+
+.utilityItem:hover {
+  text-decoration: underline;
+}
+
+.mainHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0 21px 0;
+  background-color: white;
+}
+
+.logoImage {
+  width: 42px;
+  height: 50px;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+}
+
+.userMenuItem {
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.userMenuItem:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #d9d9d9; /* 구분선 스타일 */
+  margin: 0;
+}
+
+.navbar {
+  width: 100%;
+  padding: 18px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navItem {
+  margin: 0 15px;
+  color: #555555;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  text-decoration: underline;
+}
