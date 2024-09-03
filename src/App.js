@@ -1,4 +1,4 @@
-import Community from "./components/community/Community";
+import Community from "./pages/community/Community";
 
 function App() {
   return (

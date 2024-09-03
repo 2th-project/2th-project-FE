@@ -1,4 +1,4 @@
-import Sidebar from "../common/sidebar/Sidebar";
+import Sidebar from "../../components/common/sidebar/Sidebar";
 import Board from "./Board";
 import styles from "./Community.module.css";
 
