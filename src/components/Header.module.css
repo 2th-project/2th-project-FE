@@ -42,14 +42,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 5px 0 21px 0;
   background-color: white;
 }
 
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  cursor: pointer;
+.logoImage {
+  width: 42px;
+  height: 50px;
 }
 
 .userMenu {
@@ -58,7 +57,7 @@
 }
 
 .userMenuItem {
-  margin-left: 20px;
+  margin-left: 30px;
   cursor: pointer;
 }
 
@@ -66,17 +65,23 @@
   text-decoration: underline;
 }
 
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #d9d9d9; /* 구분선 스타일 */
+  margin: 0;
+}
+
 .navbar {
   width: 100%;
-  background-color: #007bff;
-  padding: 10px 0;
+  padding: 18px 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .navItem {
   margin: 0 15px;
-  color: white;
+  color: #555555;
   font-weight: bold;
   cursor: pointer;
 }

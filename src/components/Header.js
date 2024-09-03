@@ -16,7 +16,9 @@ const Header = () => {
 
       {/* 메인 헤더 */}
       <div className={styles.mainHeader}>
-        <div className={styles.logo}>로고</div>
+        <div className={styles.logo}>
+          <img src="/assets/logo.png" alt="로고" className={styles.logoImage} />
+        </div>
         <div className={styles.userMenu}>
           <span className={styles.userMenuItem}>통합검색</span>
           <span className={styles.userMenuItem}>회원가입</span>
@@ -24,11 +26,15 @@ const Header = () => {
         </div>
       </div>
 
+      <hr className={styles.divider} />
+
       {/* 네비게이션 메뉴 */}
       <nav className={styles.navbar}>
         <span className={styles.navItem}>복지서비스</span>
         <span className={styles.navItem}>소통광장</span>
       </nav>
+
+      <hr className={styles.divider} />
     </header>
   );
 };
