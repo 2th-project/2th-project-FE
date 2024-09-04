@@ -1,9 +1,15 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { Outlet } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
+  const isMainPage = location.pathname === "/";
+
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-page={isMainPage ? "main" : "other"}>
       {/* 유틸리티 바 */}
       <div className={styles.utilityBar}>
         <div>
@@ -34,7 +40,8 @@ const Header = () => {
         <span className={styles.navItem}>소통광장</span>
       </nav>
 
-      <hr className={styles.divider} />
+      <hr className={styles.divider02} />
+      <Outlet />
     </header>
   );
 };
