@@ -5,6 +5,11 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  color: #1d1d1d;
+}
+
+.header[data-page="main"] {
+  color: white; /* 메인 페이지에서는 글씨 색상을 화이트로 변경 */
 }
 
 .utilityBar {
@@ -19,7 +24,6 @@
   margin-left: 14px;
   cursor: pointer;
   position: relative;
-  color: #1d1d1d;
 }
 
 .utilityItem::before {
@@ -43,7 +47,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 0 21px 0;
-  background-color: white;
 }
 
 .logoImage {
@@ -65,10 +68,30 @@
   text-decoration: underline;
 }
 
-.divider {
+/* .divider {
   width: 100%;
   border: none;
-  border-top: 1px solid #d9d9d9; /* 구분선 스타일 */
+  border-top: 1px solid #d9d9d9;
+  margin: 0;
+} */
+
+.divider {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100vw;
+  border: none;
+  border-top: 1px solid #d8d8d8;
+  margin: 0;
+}
+
+.divider02 {
+  position: absolute;
+  top: 176px;
+  left: 0;
+  width: 100vw;
+  border: none;
+  border-top: 1px solid #d8d8d8;
   margin: 0;
 }
 
@@ -81,7 +104,6 @@
 
 .navItem {
   margin: 0 15px;
-  color: #555555;
   font-weight: bold;
   cursor: pointer;
 }

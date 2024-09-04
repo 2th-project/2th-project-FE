@@ -1,0 +1,11 @@
+.mainBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1; /* 헤더보다 낮은 z-index 값 설정 */
+}
+
+.mainBannerImage {
+  width: 100%;
+}
