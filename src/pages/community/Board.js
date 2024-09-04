@@ -3,6 +3,7 @@ import FreeBoard from "./FreeBoard";
 import FAQ from "./FAQ";
 import CreateBoard from "./CreateBoard";
 import styles from "./Board.module.css";
+import Post from "./Post";
 
 function Board({ activeItem }) {
   return (
@@ -13,6 +14,7 @@ function Board({ activeItem }) {
         <Route path="free-board" element={<FreeBoard />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="create-board" element={<CreateBoard />} />
+        <Route path="post" element={<Post />} />
       </Routes>
     </div>
   );

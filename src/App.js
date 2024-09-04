@@ -6,15 +6,15 @@ import FAQ from "./pages/community/FAQ";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Community />, // Community를 부모로 설정
+    element: <Community />,
     children: [
       {
         path: "free-board",
-        element: <FreeBoard />, // FreeBoard를 자식 라우트로 설정
+        element: <FreeBoard />,
       },
       {
         path: "faq",
-        element: <FAQ />, // FAQ를 자식 라우트로 설정
+        element: <FAQ />,
       },
       {
         path: "*", // 기본 경로 설정
