@@ -9,15 +9,15 @@ function Community() {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(() => {
     // 초기 활성 항목을 URL 경로에 따라 설정
-    if (location.pathname.includes("faq")) return "FAQ(추가되었을 경우 예제)";
+    if (location.pathname.includes("faq")) return "FAQ(추가되었을 경우 예)";
     return "자유게시판";
   });
 
   const sidebarItems = [
     { name: "자유게시판", active: activeItem === "자유게시판" },
     {
-      name: "FAQ(추가되었을 경우 예제)",
-      active: activeItem === "FAQ(추가되었을 경우 예제)",
+      name: "FAQ(추가되었을 경우 예)",
+      active: activeItem === "FAQ(추가되었을 경우 예)",
     },
   ];
 

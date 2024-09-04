@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./FreeBoard.module.css";
 
 const dummyData = Array(10).fill({
@@ -9,6 +10,12 @@ const dummyData = Array(10).fill({
 });
 
 function FreeBoard() {
+  const navigate = useNavigate();
+
+  const handleWriteClick = () => {
+    navigate("/create-board");
+  };
+
   return (
     <div>
       <div className={styles.search}>
@@ -47,7 +54,9 @@ function FreeBoard() {
           ))}
         </div>
       </div>
-      <button className={styles.writeBtn}>글쓰기</button>
+      <button className={styles.writeBtn} onClick={handleWriteClick}>
+        글쓰기
+      </button>
       <div className={styles.pagination}>
         <button>&lt;</button>
         <button className={styles.active}>1</button>
