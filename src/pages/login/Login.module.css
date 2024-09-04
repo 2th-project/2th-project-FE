@@ -1,0 +1,85 @@
+.styleBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-color: white; */
+  background-color: #dfeafffa;
+}
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+.loginTitle {
+  width: 350px;
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 2px solid black;
+}
+
+.loginForm {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputBox {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(194, 194, 194);
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.inputBox input {
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  text-align: start;
+  border: none;
+  margin: 5px 0;
+}
+
+.loninButton {
+  background-color: #adcff2;
+  width: 320px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.findPassword {
+  width: 100px;
+  background-color: transparent;
+  align-items: center;
+  border: none;
+  font-size: 14px;
+  color: rgb(194, 194, 194);
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.oauthLogin {
+  background-color: yellow;
+  width: 320px;
+  height: 40px;
+  border-radius: 3px;
+  border-color: transparent;
+  font-size: 16px;
+  margin: 10px 0;
+}

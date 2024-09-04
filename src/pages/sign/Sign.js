@@ -3,13 +3,13 @@ import styles from "./Sign.module.css";
 
 const Sign = () => {
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.signContainer}>
-        <h1 className={styles.title}>회원가입</h1>
+    <div className={styles.pagebox}>
+      <div className={styles.signbox}>
+        <h1 className={styles.formtitle}>회원가입</h1>
         <form className={styles.form}>
           <div className={styles.formGroup}>
-            <label htmlFor="username">아이디</label>
-            <input type="text" id="username" name="username" />
+            <label htmlFor="id">아이디</label>
+            <input type="text" id="id" name="id" />
             <div>
               <button className={styles.checkButton}>중복확인</button>
             </div>
@@ -20,8 +20,8 @@ const Sign = () => {
             <div></div>
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="dob">생년월일</label>
-            <input type="date" id="dob" name="dob" />
+            <label htmlFor="birthday">생년월일</label>
+            <input type="date" id="birthday" name="birthday" />
             <div></div>
           </div>
           <div className={styles.formGroup}>
@@ -37,22 +37,18 @@ const Sign = () => {
             <div></div>
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="confirmPassword">비밀번호 확인</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-            />
+            <label htmlFor="password_check">비밀번호 확인</label>
+            <input type="password" id="password_check" name="password_check" />
             <div></div>
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="contact">연락처</label>
-            <input type="tel" id="contact" name="contact" />
+            <label htmlFor="phone_number">연락처</label>
+            <input type="number" id="phone_number" name="phone_number" />
             <div></div>
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="location">거주 지역</label>
-            <input type="text" id="location" name="location" />
+            <label htmlFor="area">거주 지역</label>
+            <input type="text" id="area" name="area" />
             <div></div>
           </div>
           <div className={styles.submit}>
