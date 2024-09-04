@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -35,6 +36,7 @@ const Header = () => {
       </nav>
 
       <hr className={styles.divider} />
+      <Outlet />
     </header>
   );
 };

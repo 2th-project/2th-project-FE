@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Community from "./pages/community/Community";
-import Home from "./pages/main/Home";
 import Header from "./components/Header";
+import Main from "./pages/main/Main";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Header />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", element: <Main /> },
       { path: "community", element: <Community /> },
     ],
   },
