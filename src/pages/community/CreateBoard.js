@@ -24,10 +24,10 @@ function CreateBoard() {
 
   return (
     <div className={styles.createBoard}>
-      <h2>새 게시글 작성</h2>
+      <p className={styles.category}>자유게시판 &gt; 새 게시글 작성</p>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label>제목:</label>
+          <label className={styles.title}>제목</label>
           <input
             type="text"
             value={title}
@@ -35,14 +35,14 @@ function CreateBoard() {
             className={styles.titleInput}
           />
         </div>
-        <div className={styles.formGroup}>
-          <label>내용:</label>
+        <div className={styles.formGroup2}>
+          <label className={styles.content}>내용</label>
           <ReactQuill
             value={content}
             onChange={handleContentChange}
             className={styles.quill}
             theme="snow"
-            placeholder="내용을 작성해주세요..."
+            placeholder="내용을 작성해주세요."
           />
         </div>
         <button type="submit" className={styles.submitButton}>

@@ -1,46 +1,56 @@
+@import "../../styles/variables.module.css";
+
 .createBoard {
-  max-width: 800px;
+  max-width: 955px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  text-align: center;
+.category {
+  text-align: right;
   margin-bottom: 20px;
+  color: #999;
 }
 
 .formGroup {
   margin-bottom: 20px;
+  width: 955px;
+}
+
+.title,
+.content {
+  font-size: 20px;
 }
 
 .titleInput {
-  width: 100%;
+  width: 935px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+.formGroup2 {
+  height: 400px;
+  width: 955px;
+}
+
 .quill {
   height: 300px;
-  margin-bottom: 20px;
 }
 
 .submitButton {
   display: block;
-  width: 100%;
+  width: 955px;
   padding: 12px;
-  font-size: 18px;
+  font-size: 16px;
   color: white;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
 .submitButton:hover {
-  background-color: #0056b3;
+  background-color: #73b2f5;
 }
