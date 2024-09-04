@@ -1,0 +1,27 @@
+.benefitsSection {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.imagesContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.benefitImage {
+  width: 413px;
+  height: 365px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

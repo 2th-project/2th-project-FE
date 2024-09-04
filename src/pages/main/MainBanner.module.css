@@ -1,11 +1,14 @@
-.mainBanner {
+.mainBannerBox {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 66px;
+}
+
+.mainBannerImage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: -1; /* 헤더보다 낮은 z-index 값 설정 */
-}
-
-.mainBannerImage {
-  width: 100%;
+  height: 676px;
+  z-index: -1;
 }

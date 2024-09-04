@@ -5,11 +5,10 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  color: #1d1d1d;
 }
 
 .header[data-page="main"] {
-  color: white; /* 메인 페이지에서는 글씨 색상을 화이트로 변경 */
+  color: white;
 }
 
 .utilityBar {
