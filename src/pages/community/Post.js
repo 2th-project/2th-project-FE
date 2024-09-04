@@ -1,25 +1,27 @@
+import { useLocation } from "react-router-dom";
 import styles from "./Post.module.css";
 
-function Post(props) {
+function Post() {
+  const location = useLocation();
+  const { title, content, userId, date, views } = location.state;
+
   return (
     <div>
       <p className={styles.category}>자유게시판 &gt; 게시글</p>
       <div>
-        <div>제목</div>
-        <div>잠실역 환승구간 에어컨 추가 설치건</div>
-        <div>
-          <div>작성자</div>
+        <div className={styles.postTitle}>제목</div>
+        <div className={styles.postContent}>{title}</div>
+        <div className={styles.postDetail}>
+          <div>작성자 {userId}</div>
           <span>|</span>
-          <div>게시날짜</div>
+          <div>게시날짜 {date}</div>
           <span>|</span>
-          <div>조회수</div>
+          <div>조회수 {views}</div>
         </div>
       </div>
       <div>
-        <div>내용</div>
-        <div>
-          잠실역 8호선-2호선 환승통로 냉방 관리에 관심을 기울여 주길 요청.
-        </div>
+        <div className={styles.postTitle}>내용</div>
+        <div className={styles.postContent}>{content}</div>
       </div>
       <button>수정하기</button>
       <button>삭제하기</button>

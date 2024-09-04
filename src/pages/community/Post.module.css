@@ -1,5 +1,30 @@
+@import "../../styles/variables.module.css";
+
 .category {
   text-align: right;
   margin-bottom: 20px;
+  color: #999;
+}
+
+.postTitle {
+  height: 50px;
+  font-size: 20px;
+  border-top: 1px solid var(--border-color1);
+}
+
+.postContent {
+  border-top: 1px solid var(--border-color1);
+  border-bottom: 1px solid var(--border-color1);
+  padding: 20px 0;
+}
+
+.postDetail {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.postDetail div,
+span {
   color: #999;
 }
