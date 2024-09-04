@@ -1,0 +1,32 @@
+.quickFindContainer {
+  width: 100%;
+  max-width: 570px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 28px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 18px 48px 18px 18px;
+  border: 1px solid #717171;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.searchInput::placeholder {
+  color: #aaa;
+}

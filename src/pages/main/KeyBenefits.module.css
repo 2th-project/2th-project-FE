@@ -17,11 +17,13 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  margin-bottom: 102px;
 }
 
-.benefitImage {
+.benefitBox {
   width: 413px;
   height: 365px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0; /* 박스 배경색 */
+  border: 2px solid #ccc; /* 박스 테두리 */
 }
