@@ -32,6 +32,9 @@ const Header = () => {
             className={styles.logoImage}
             onClick={() => handleNavigate("/")}
           />
+          <span className={styles.logoText} onClick={() => handleNavigate("/")}>
+            복지 24
+          </span>
         </div>
         <div className={styles.userMenu}>
           <span className={styles.userMenuItem}>통합검색</span>
