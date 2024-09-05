@@ -1,17 +1,19 @@
+// Board.js
 import { Routes, Route, Navigate } from "react-router-dom";
 import styles from "./Board.module.css";
 import Post from "./Post";
-import PostList from "../../pages/community/PostList";
-import CreatePost from "./CreatePost";
+import BulletinBoard from "../../pages/community/BulletinBoard";
 import FAQ from "./../../pages/community/FAQ";
+import BoardTitle from "./boardTitle/BoardTitle";
+import CreatePost from "./CreatePost";
 
 function Board({ activeItem }) {
   return (
     <div className={styles.board}>
-      <div className={styles.title}>{activeItem}</div>
+      <BoardTitle text={activeItem} />
       <Routes>
-        <Route path="/" element={<Navigate to="/post-list" />} />
-        <Route path="/post-list" element={<PostList />} />
+        <Route path="/" element={<Navigate to="/bulletin-board" />} />
+        <Route path="/bulletin-board" element={<BulletinBoard />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/community/create-post" element={<CreatePost />} />
         <Route path="/community/post" element={<Post />} />

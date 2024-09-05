@@ -20,6 +20,11 @@
 .title,
 .content {
   font-size: 20px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #f7f7f7; */
 }
 
 .titleInput {
@@ -32,7 +37,7 @@
 
 .formGroup2 {
   height: 400px;
-  width: 955px;
+  width: 100%;
 }
 
 .quill {
@@ -40,15 +45,9 @@
 }
 
 .submitButton {
-  display: block;
-  width: 955px;
+  width: 100%;
   padding: 12px;
   font-size: 16px;
-  color: white;
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 .submitButton:hover {

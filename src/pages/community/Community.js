@@ -23,7 +23,7 @@ function Community() {
 
   const handleItemClick = (item) => {
     setActiveItem(item.name);
-    navigate(`/${item.name === "자유게시판" ? "post-list" : "faq"}`);
+    navigate(`/${item.name === "자유게시판" ? "bulletin-board" : "faq"}`); // Navigate to /bulletin-board
   };
 
   return (

@@ -1,0 +1,31 @@
+@import "../../styles/variables.module.css";
+
+.writeBtn {
+  margin-top: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchBox {
+  margin: 20px 0;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+}
+
+.active {
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: #fff;
+}

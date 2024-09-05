@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./CreatePost.module.css";
+import Button from "./../common/button/Button";
 
 function CreatePost() {
   const [title, setTitle] = useState("");
@@ -45,9 +46,9 @@ function CreatePost() {
             placeholder="내용을 작성해주세요."
           />
         </div>
-        <button type="submit" className={styles.submitButton}>
+        <Button type="submit" className={styles.submitButton}>
           작성하기
-        </button>
+        </Button>
       </form>
     </div>
   );
