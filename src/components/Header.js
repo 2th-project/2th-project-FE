@@ -38,8 +38,18 @@ const Header = () => {
         </div>
         <div className={styles.userMenu}>
           <span className={styles.userMenuItem}>통합검색</span>
-          <span className={styles.userMenuItem}>회원가입</span>
-          <span className={styles.userMenuItem}>로그인</span>
+          <span
+            className={styles.userMenuItem}
+            onClick={() => handleNavigate("/sign")}
+          >
+            회원가입
+          </span>
+          <span
+            className={styles.userMenuItem}
+            onClick={() => handleNavigate("/login")}
+          >
+            로그인
+          </span>
         </div>
       </div>
 
