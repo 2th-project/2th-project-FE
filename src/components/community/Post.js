@@ -10,7 +10,6 @@ function Post() {
       <p className={styles.category}>자유게시판 &gt; 게시글</p>
       <div>
         <div className={styles.postTitle}>제목</div>
-        <div className={styles.postContent}>{title}</div>
         <div className={styles.postDetail}>
           <div>작성자 {userId}</div>
           <span>|</span>
@@ -18,6 +17,7 @@ function Post() {
           <span>|</span>
           <div>조회수 {views}</div>
         </div>
+        <div className={styles.postContent}>{title}</div>
       </div>
       <div>
         <div className={styles.postTitle}>내용</div>

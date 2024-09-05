@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // react-quill의 기본 스타일
-import styles from "./CreateBoard.module.css";
+import "react-quill/dist/quill.snow.css";
+import styles from "./CreatePost.module.css";
 
-function CreateBoard() {
+function CreatePost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -53,4 +53,4 @@ function CreateBoard() {
   );
 }
 
-export default CreateBoard;
+export default CreatePost;

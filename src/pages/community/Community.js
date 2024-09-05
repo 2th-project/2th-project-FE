@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Sidebar from "../../components/common/sidebar/Sidebar";
 import styles from "./Community.module.css";
-import Board from "./Board";
+import Board from "./../../components/community/Board";
 
 function Community() {
   const location = useLocation();
@@ -23,7 +23,7 @@ function Community() {
 
   const handleItemClick = (item) => {
     setActiveItem(item.name);
-    navigate(`/${item.name === "자유게시판" ? "free-board" : "faq"}`);
+    navigate(`/${item.name === "자유게시판" ? "post-list" : "faq"}`);
   };
 
   return (

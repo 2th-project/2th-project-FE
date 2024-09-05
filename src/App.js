@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Community from "./pages/community/Community";
-import FreeBoard from "./pages/community/FreeBoard";
 import FAQ from "./pages/community/FAQ";
+import PostList from "./pages/community/PostList";
 
 const router = createBrowserRouter([
   {
@@ -9,16 +9,16 @@ const router = createBrowserRouter([
     element: <Community />,
     children: [
       {
-        path: "free-board",
-        element: <FreeBoard />,
+        path: "/post-list",
+        element: <PostList />,
       },
       {
-        path: "faq",
+        path: "/faq",
         element: <FAQ />,
       },
       {
         path: "*", // 기본 경로 설정
-        element: <FreeBoard />,
+        element: <PostList />,
       },
     ],
   },

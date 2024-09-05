@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./FreeBoard.module.css";
+import styles from "./PostList.module.css";
 
 const dummyData = [
   {
@@ -60,15 +60,15 @@ const dummyData = [
   },
 ];
 
-function FreeBoard() {
+function PostList() {
   const navigate = useNavigate();
 
   const handleWriteClick = () => {
-    navigate("/create-board");
+    navigate("/community/create-post");
   };
 
   const handleTitleClick = (post) => {
-    navigate(`/post`, { state: post });
+    navigate(`/community/post`, { state: post });
   };
 
   return (
@@ -101,7 +101,7 @@ function FreeBoard() {
           {dummyData
             .slice()
             .reverse()
-            .map((post, index) => (
+            .map((post) => (
               <div className={styles.tableRow} key={post.id}>
                 <div className={styles.tableCell}>{post.id}</div>
                 <div className={styles.tableCell}>{post.userId}</div>
@@ -134,4 +134,4 @@ function FreeBoard() {
   );
 }
 
-export default FreeBoard;
+export default PostList;
