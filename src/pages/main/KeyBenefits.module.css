@@ -1,0 +1,29 @@
+.benefitsSection {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.imagesContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 102px;
+}
+
+.benefitBox {
+  width: 413px;
+  height: 365px;
+  border-radius: 8px;
+  background-color: #f0f0f0; /* 박스 배경색 */
+  border: 2px solid #ccc; /* 박스 테두리 */
+}

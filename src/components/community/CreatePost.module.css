@@ -1,0 +1,55 @@
+@import "../../styles/variables.module.css";
+
+.createBoard {
+  max-width: 955px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.category {
+  text-align: right;
+  margin-bottom: 20px;
+  color: #999;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  width: 955px;
+}
+
+.title,
+.content {
+  font-size: 20px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #f7f7f7; */
+}
+
+.titleInput {
+  width: 935px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formGroup2 {
+  height: 400px;
+  width: 100%;
+}
+
+.quill {
+  height: 300px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #73b2f5;
+}

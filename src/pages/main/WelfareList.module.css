@@ -1,0 +1,51 @@
+/* .welfareListContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.welfareBox {
+  width: 305px;
+  height: 394px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+} */
+
+.welfareListContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.welfareListContainerList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
