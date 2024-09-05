@@ -1,15 +1,15 @@
 import styles from "./Sidebar.module.css";
 
-function Sidebar({ title, items }) {
+function Sidebar({ title, items, onItemClick }) {
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>{title}</h2>
       <ul className={styles.list}>
         {items.map((item, index) => (
           <li
-            // key 값으로는 index가 좋지 않으므로 변경하기!
             key={index}
-            className={`${styles.listItem} ${item.active ? styles.active : ""}`}
+            className={`${styles.listItem} ${item.active && styles.active}`}
+            onClick={() => onItemClick(item)}
           >
             {item.name}
           </li>

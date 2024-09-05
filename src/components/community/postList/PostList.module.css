@@ -1,0 +1,75 @@
+@import "../../../styles/variables.module.css";
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 955px;
+}
+
+.tableHeader {
+  background-color: #f5f8fc;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+  border-top: 1px solid black;
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+}
+
+.tableCell {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableBody .tableCell:nth-child(1),
+.tableBody .tableCell:nth-child(4) {
+  color: #666;
+}
+
+.tableBody .tableCell:nth-child(2),
+.tableBody .tableCell:nth-child(5) {
+  color: #222;
+}
+
+.tableBody .tableCell:nth-child(3) {
+  flex: 3;
+  text-align: left;
+  justify-content: flex-start;
+  color: #222;
+}
+
+.tableCell:nth-child(1),
+.tableCell:nth-child(5) {
+  flex: 0.5;
+}
+
+.tableCell:nth-child(3) {
+  flex: 3;
+}
+
+.tableCell:nth-child(2),
+.tableCell:nth-child(4) {
+  flex: 0.7;
+}
+
+/* .tableCell:nth-child(3) {
+  flex: 3;
+  text-align: left;
+  justify-content: flex-start;
+} */
+
+.cellContent {
+  cursor: pointer;
+}
