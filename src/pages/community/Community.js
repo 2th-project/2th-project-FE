@@ -23,7 +23,9 @@ function Community() {
 
   const handleItemClick = (item) => {
     setActiveItem(item.name);
-    navigate(`/${item.name === "자유게시판" ? "bulletin-board" : "faq"}`); // Navigate to /bulletin-board
+    navigate(
+      `/community/${item.name === "자유게시판" ? "bulletin-board" : "faq"}`
+    );
   };
 
   return (

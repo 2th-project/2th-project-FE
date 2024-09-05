@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Main /> },
       {
-        path: "community",
+        path: "community/*",
         element: <Community />,
         children: [
           {

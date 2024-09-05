@@ -11,11 +11,11 @@ function Board({ activeItem }) {
     <div className={styles.board}>
       <BoardTitle text={activeItem} />
       <Routes>
-        <Route path="/" element={<Navigate to="/bulletin-board" />} />
+        <Route path="/" element={<Navigate to="bulletin-board" />} />
         <Route path="bulletin-board" element={<BulletinBoard />} />
         <Route path="faq" element={<FAQ />} />
-        <Route path="community/create-post" element={<CreatePost />} />
-        <Route path="community/post" element={<Post />} />
+        <Route path="create-post" element={<CreatePost />} />
+        <Route path="post" element={<Post />} />
       </Routes>
     </div>
   );
