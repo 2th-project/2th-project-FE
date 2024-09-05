@@ -1,0 +1,93 @@
+.pagebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #dfeafffa;
+}
+
+.signbox {
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  width: 720px;
+}
+
+.formtitle {
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: start;
+  padding: 20px 0;
+  border-bottom: 2px solid black;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.formGroup label {
+  width: 120px;
+  max-width: 120px;
+  margin-right: 10px;
+}
+
+.formGroup input {
+  width: 320px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.formGroup div {
+  display: flex;
+  justify-content: flex-end;
+  width: 150px;
+}
+
+.checkButton {
+  width: 100px;
+  padding: 8px 12px;
+  background-color: #adcff2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  min-width: 100px;
+}
+
+.checkButton:hover {
+  background-color: #adcff2;
+}
+
+.submit {
+  padding: 10px 0;
+  border-top: 2px solid black;
+  margin-bottom: 20px;
+}
+.submitButton {
+  padding: 10px;
+  background-color: #adcff2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.submitButton:hover {
+  background-color: #adcff2;
+}
