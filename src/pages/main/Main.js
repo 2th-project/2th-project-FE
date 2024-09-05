@@ -2,6 +2,7 @@ import React from "react";
 import MainBanner from "./MainBanner";
 import KeyBenefits from "./KeyBenefits";
 import QuickFind from "./QuickFind";
+import FilterComponent from "./FilterComponent";
 import WelfareList from "./WelfareList";
 
 const Main = () => {
@@ -11,6 +12,7 @@ const Main = () => {
         <MainBanner />
         <KeyBenefits />
         <QuickFind />
+        <FilterComponent />
         <WelfareList />
       </main>
     </>
