@@ -10,3 +10,4 @@ export { default as caretDown } from "./assets.caretDown";
 export { default as magnifyingGlass } from "./assets.magnifyingGlass";
 export { default as userPlus } from "./assets.userPlus";
 export { default as downloadSimple } from "./assets.downloadSimple";
+export { default as favicon } from "./assets.favicon";
