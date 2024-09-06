@@ -1,0 +1,95 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.fLogo {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 30px;
+  height: 40px;
+}
+
+.logoText {
+  margin-top: 10px;
+  margin-left: 16px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.fCnt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fInfo {
+  flex: 1;
+}
+
+.infoAddr {
+  margin-bottom: 10px;
+}
+
+.infoCs {
+  list-style: none;
+  padding: 0;
+}
+
+.infoCs li {
+  margin-bottom: 5px;
+}
+
+.fLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.linkGo {
+  margin-bottom: 40px;
+  margin-left: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.linkGo a {
+  color: #1d1d1d;
+  display: flex;
+  margin-top: 10px;
+}
+
+.linkSns {
+  display: inline-block;
+  background-size: cover;
+  margin-left: 8px;
+}
+
+.fBtm {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.fMenu a {
+  margin-right: 15px;
+  color: #555;
+}
+
+.fCopy {
+  margin-top: 10px;
+}
+
+.banTxt {
+  font-size: 0.875rem;
+}
