@@ -27,7 +27,7 @@ const FilterComponent = () => {
     <div className={styles.filterContainer}>
       <div className={styles.selectContainer}>
         <label>
-          사용자 구분:
+          사용자 구분
           <select onChange={handleSelect1} value={selectedOption1}>
             <option value="">선택하세요</option>
             {options1.map((option) => (
@@ -39,7 +39,7 @@ const FilterComponent = () => {
         </label>
 
         <label>
-          신청 방법:
+          신청 방법
           <select onChange={handleSelect2} value={selectedOption2}>
             <option value="">선택하세요</option>
             {options2.map((option) => (
@@ -51,7 +51,7 @@ const FilterComponent = () => {
         </label>
 
         <label>
-          지원 대상:
+          지원 대상
           <select onChange={handleSelect3} value="">
             <option value="">여러 항목 선택</option>
             {options3.map((option) => (
@@ -63,12 +63,14 @@ const FilterComponent = () => {
         </label>
       </div>
 
+      <hr className={styles.divide} />
+
       <div className={styles.selectedOptions}>
         <p>선택된 필터({selectedOptions3.length}):</p>
         {selectedOptions3.map((option) => (
           <div key={option} className={styles.selectedOption}>
             {option}{" "}
-            <button onClick={() => handleRemoveOption(option)}>삭제</button>
+            <button onClick={() => handleRemoveOption(option)}>x</button>
           </div>
         ))}
       </div>
