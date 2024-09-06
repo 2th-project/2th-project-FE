@@ -53,7 +53,7 @@ const Header = () => {
             onClick={() => handleNavigate("/")}
           />
           <span className={styles.logoText} onClick={() => handleNavigate("/")}>
-            복지 24
+            하나로 복지
           </span>
         </div>
         <div className={styles.userMenu}>
