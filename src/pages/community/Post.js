@@ -1,10 +1,41 @@
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import styles from "./Post.module.css";
+import Comment from "./../../components/community/Comment";
 import Button from "./../../components/common/button/Button";
 
 function Post() {
   const location = useLocation();
   const { title, content, userId, date, views } = location.state;
+
+  const [comments, setComments] = useState([
+    { id: 1, userId: "user1", content: "첫 번째 댓글입니다." },
+    { id: 2, userId: "user2", content: "두 번째 댓글입니다." },
+    { id: 3, userId: "user3", content: "세 번째 댓글입니다." },
+  ]);
+
+  const handleAddComment = (newContent) => {
+    const newComment = {
+      id: comments.length + 1,
+      userId: "newUser",
+      content: newContent,
+    };
+    setComments([...comments, newComment]);
+  };
+
+  const handleEditComment = (id, newContent) => {
+    setComments((prevComments) =>
+      prevComments.map((comment) =>
+        comment.id === id ? { ...comment, content: newContent } : comment
+      )
+    );
+  };
+
+  const handleDeleteComment = (id) => {
+    setComments((prevComments) =>
+      prevComments.filter((comment) => comment.id !== id)
+    );
+  };
 
   return (
     <div>
@@ -21,19 +52,21 @@ function Post() {
         <div className={styles.postContent}>{content}</div>
       </div>
       <div className={styles.postBtnBox}>
-        <Button type="submit">수정하기</Button>
-        <Button type="submit">삭제하기</Button>
-      </div>
-      <div>
-        <label>댓글</label>
-        <div className={styles.commentBox}>
-          <input
-            className={styles.commentInput}
-            placeholder="댓글을 입력하세요."
-          />
-          <button className={styles.commentBtn}>작성하기</button>
+        <div className={styles.postEditBtnBox}>
+          <Button type="submit">수정하기</Button>
+        </div>
+        <div className={styles.postDeleteBtnBox}>
+          <Button type="submit" className={styles.postDeleteBtn}>
+            삭제하기
+          </Button>
         </div>
       </div>
+      <Comment
+        comments={comments}
+        onAddComment={handleAddComment}
+        onEditComment={handleEditComment}
+        onDeleteComment={handleDeleteComment}
+      />
     </div>
   );
 }

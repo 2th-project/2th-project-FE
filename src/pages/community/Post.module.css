@@ -48,30 +48,11 @@
   justify-content: flex-end;
 }
 
-.commentBox {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc; /* Box border */
-  padding: 10px;
-  width: 935px;
+.postEditBtnBox,
+.postDeleteBtnBox {
+  margin-right: 20px;
 }
 
-.commentInput {
-  border: none;
-  flex-grow: 1;
-  padding: 8px;
-  font-size: 14px;
-  outline: none;
-}
-
-.commentBtn {
-  border: none;
-  background-color: #f5f5f5;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-left: 1px solid #ccc; /* Divider between input and button */
-}
-
-.commentBtn:hover {
-  background-color: #e0e0e0;
+.postDeleteBtn {
+  background-color: #cbd0d5;
 }
