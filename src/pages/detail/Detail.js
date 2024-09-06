@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 function Detail() {
   const [activeTab, setActiveTab] = useState("지원 대상");
 
+  
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -20,31 +21,9 @@ function Detail() {
 
       <div className={styles.container}>
         <h1 className={styles.title}>복지 서비스 상세</h1>
+
         <div className={styles.infoBox}>
-          <p className={styles.description}>카드1 의 복지 "제목"</p>
-          <table className={styles.infoTable}>
-            <thead>
-              <tr>
-                <th>기준 연도</th>
-                <th>문의처</th>
-                <th>지원 기간</th>
-                <th>제공 유형</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>연도 데이터</td>
-                <td>전화 번호 데이터</td>
-                <td>지원기간 데이터</td>
-                <td>제공 유형 데이터</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className={styles.infoBox}>
-          <p className={styles.description}>
-            카드1 의 복지 에 대한 가공데이터들
-          </p>
+          <p className={styles.description}>담당부처/소관기관명</p>
           <table className={styles.newTable}>
             <thead>
               <tr>
@@ -100,9 +79,25 @@ function Detail() {
             </tbody>
           </table>
         </div>
+
+        <div className={styles.infoBox}>
+          <table className={styles.infoTable}>
+            <thead>
+              <tr>
+                <th>주요 내용</th>
+                <th>진행 상황</th>
+                <th>지원 내용</th>
+                <th>신청 방법</th>
+                <th>접수 문의</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
         <div className={styles.buttonWrapper}>
           <Button onClick={handleButtonClick} className={styles.largeButton}>
-            목록
+            신청하기
           </Button>
         </div>
       </div>
