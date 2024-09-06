@@ -6,3 +6,7 @@ export { default as twitter } from "./assets.twitter";
 export { default as instagram } from "./assets.instagram";
 export { default as facebook } from "./assets.facebook";
 export { default as blog } from "./assets.blog";
+export { default as caretDown } from "./assets.caretDown";
+export { default as magnifyingGlass } from "./assets.magnifyingGlass";
+export { default as userPlus } from "./assets.userPlus";
+export { default as downloadSimple } from "./assets.downloadSimple";
