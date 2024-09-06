@@ -8,6 +8,7 @@ import CreatePost from "./pages/community/CreatePost";
 import Post from "./pages/community/Post";
 import Sign from "./pages/sign/Sign";
 import Login from "./pages/login/Login";
+import Detail from "./pages/detail/Detail";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "/detail", element: <Detail /> },
 ]);
 
 function App() {
