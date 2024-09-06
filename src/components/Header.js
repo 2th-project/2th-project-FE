@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Header.module.css";
-import { Outlet } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -68,7 +67,6 @@ const Header = () => {
       </nav>
 
       <hr className={styles.divider02} />
-      <Outlet />
     </header>
   );
 };

@@ -1,6 +1,12 @@
+.mainBanner {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
 .mainBannerBox {
   width: 100%;
-  height: 414px;
+  height: 490px;
   /* height: 434px; */
   margin-bottom: 66px;
 }

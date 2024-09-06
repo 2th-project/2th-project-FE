@@ -1,4 +1,10 @@
 .quickFindContainer {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.quickFindBox {
   width: 100%;
   max-width: 570px;
   text-align: left;
