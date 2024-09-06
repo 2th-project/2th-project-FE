@@ -12,7 +12,7 @@ const Main = () => {
         <MainBanner />
         <KeyBenefits />
         <QuickFind />
-        <FilterComponent />
+        {/* <FilterComponent /> */}
         <WelfareList />
       </main>
     </>
