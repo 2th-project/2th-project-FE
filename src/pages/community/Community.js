@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import Sidebar from "../../components/common/sidebar/Sidebar";
 import styles from "./Community.module.css";
-import Board from "./../../components/community/Board";
 
 function Community() {
   const location = useLocation();
@@ -23,9 +22,7 @@ function Community() {
 
   const handleItemClick = (item) => {
     setActiveItem(item.name);
-    navigate(
-      `/community/${item.name === "자유게시판" ? "bulletin-board" : "faq"}`
-    );
+    navigate(`/community/${item.name === "자유게시판" ? "board" : "faq"}`);
   };
 
   return (
@@ -36,7 +33,8 @@ function Community() {
         onItemClick={handleItemClick}
       />
       <div className={styles.board}>
-        <Board activeItem={activeItem} />
+        <div className={styles.boardTitle}>{activeItem}</div>
+        <Outlet />
       </div>
     </div>
   );

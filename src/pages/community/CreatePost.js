@@ -2,7 +2,7 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./CreatePost.module.css";
-import Button from "./../common/button/Button";
+import Button from "./../../components/common/button/Button";
 
 function CreatePost() {
   const [title, setTitle] = useState("");

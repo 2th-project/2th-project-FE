@@ -69,11 +69,11 @@ function BulletinBoard() {
   const [filteredData, setFilteredData] = useState(dummyData);
 
   const handleWriteClick = () => {
-    navigate("/community/create-post");
+    navigate("/community/board/create");
   };
 
   const handleTitleClick = (post) => {
-    navigate(`/community/post`, { state: post });
+    navigate(`/community/board/post`, { state: post });
   };
 
   const handleSearch = (term, type) => {
