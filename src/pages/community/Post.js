@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styles from "./Post.module.css";
-import Button from "./../common/button/Button";
+import Button from "./../../components/common/button/Button";
 
 function Post() {
   const location = useLocation();

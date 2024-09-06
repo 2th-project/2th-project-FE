@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Community from "./pages/community/Community";
 import Header from "./components/Header";
 import Main from "./pages/main/Main";
-import FAQ from "./pages/community/FAQ";
+import Community from "./pages/community/Community";
 import BulletinBoard from "./pages/community/BulletinBoard";
+import FAQ from "./pages/community/FAQ";
+import CreatePost from "./pages/community/CreatePost";
+import Post from "./pages/community/Post";
 import Sign from "./pages/sign/Sign";
 import Login from "./pages/login/Login";
 
@@ -18,12 +20,20 @@ const router = createBrowserRouter([
         element: <Community />,
         children: [
           {
-            path: "bulletin-board",
+            path: "board",
             element: <BulletinBoard />,
           },
           {
             path: "faq",
             element: <FAQ />,
+          },
+          {
+            path: "board/create",
+            element: <CreatePost />,
+          },
+          {
+            path: "board/post",
+            element: <Post />,
           },
           {
             path: "*",

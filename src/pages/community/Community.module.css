@@ -1,3 +1,5 @@
+@import "../../styles/variables.module.css";
+
 .community {
   display: flex;
   width: 1280px;
@@ -7,4 +9,14 @@
 .board {
   width: 955px;
   margin-left: 20px;
+}
+
+.boardTitle {
+  font-size: 25px;
+  font-weight: medium;
+  width: 955px;
+  height: 35px;
+  border-bottom: 1px solid var(--border-color1);
+  padding-bottom: 20px;
+  margin-top: 55px;
 }
