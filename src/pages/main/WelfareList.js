@@ -21,10 +21,11 @@
 
 // export default WelfareList;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./WelfareList.module.css";
 import WelfareListHeader from "./WelfareListHeader";
 import WelfareBox from "./WelfareBox";
+import FilterComponent from "./FilterComponent";
 
 const exampleWelfareItems = Array(24).fill({
   title: "복지 혜택 제목",
@@ -33,11 +34,40 @@ const exampleWelfareItems = Array(24).fill({
 
 const WelfareList = () => {
   const [layout, setLayout] = useState("grid"); // 'grid' or 'list'
+  const [filters, setFilters] = useState({
+    selectedOption1: "",
+    selectedOption2: "",
+    selectedOptions3: []
+  });
+  const [welfareItems, setWelfareItems] = useState([]);
+
+  // 예시 API 호출 함수 (필터 적용)
+  const fetchWelfareItems = async (filters) => {
+    try {
+      // 여기에 필터에 맞는 데이터를 API로부터 가져오는 부분을 작성합니다.
+      const response = await fetch("/api/welfare-items", {
+        method: "POST",
+        body: JSON.stringify(filters),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const data = await response.json();
+      setWelfareItems(data);
+    } catch (error) {
+      console.error("Error fetching welfare items:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchWelfareItems(filters);
+  }, [filters]);
 
   return (
     <div>
+      <FilterComponent onFilterChange={setFilters} />
       <WelfareListHeader
-        totalItems={exampleWelfareItems.length}
+        totalItems={welfareItems.length}
         layout={layout}
         setLayout={setLayout}
       />
@@ -48,9 +78,13 @@ const WelfareList = () => {
             : styles.welfareListContainerList
         }
       >
-        {exampleWelfareItems.map((item, index) => (
-          <WelfareBox key={index} item={item} layout={layout} />
-        ))}
+        {welfareItems.length > 0 ? (
+          welfareItems.map((item, index) => (
+            <WelfareBox key={index} item={item} layout={layout} />
+          ))
+        ) : (
+          <p>복지 혜택이 없습니다.</p>
+        )}
       </div>
     </div>
   );

@@ -20,7 +20,7 @@
 }
 
 .utilityItem {
-  margin-left: 14px;
+  margin-left: 28px;
   cursor: pointer;
   position: relative;
 }
@@ -28,16 +28,22 @@
 .utilityItem::before {
   content: "|";
   position: absolute;
-  left: -10px;
+  left: -16px;
   color: #ccc;
 }
 
 .utilityItem:first-child::before {
-  content: ""; /* 첫 번째 항목 앞의 막대기 제거 */
+  content: "";
 }
 
 .utilityItem:hover {
   text-decoration: underline;
+}
+
+.caretDown {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
 }
 
 .mainHeader {
@@ -71,20 +77,15 @@
 }
 
 .userMenuItem {
+  display: flex;
   margin-left: 30px;
   cursor: pointer;
+  align-items: center;
 }
 
 .userMenuItem:hover {
   text-decoration: underline;
 }
-
-/* .divider {
-  width: 100%;
-  border: none;
-  border-top: 1px solid #d9d9d9;
-  margin: 0;
-} */
 
 .divider {
   position: absolute;
