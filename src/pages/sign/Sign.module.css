@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #dfeafffa;
+  /* background-color: #dfeafffa; */
 }
 
 .signbox {
@@ -17,7 +17,7 @@
   font-size: 24px;
   margin-bottom: 30px;
   text-align: start;
-  padding: 20px 0;
+  padding: 20px;
   border-bottom: 2px solid black;
 }
 
@@ -38,6 +38,7 @@
   width: 120px;
   max-width: 120px;
   margin-right: 10px;
+  padding-left: 20px;
 }
 
 .formGroup input {
@@ -75,6 +76,8 @@
   padding: 10px 0;
   border-top: 2px solid black;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 .submitButton {
   padding: 10px;
@@ -85,7 +88,7 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
-  width: 100%;
+  width: 150px;
 }
 
 .submitButton:hover {

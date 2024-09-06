@@ -2,67 +2,56 @@ import React, { useState } from "react";
 import styles from "./Sign.module.css";
 
 const Sign = () => {
-  const [userId, setUserId] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userPasswordCheck, setUserPasswordCheck] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userBirthday, setUserBirthday] = useState("");
-  const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  const [userArea, setUserArea] = useState("");
+  const [userData, setUserData] = useState({
+    id: "",
+    name: "",
+    password: "",
+    password_check: "",
+    email: "",
+    birthday: "",
+    phone_number: "",
+    area: "",
+  });
 
-  const changeIdHandler = (event) => {
-    setUserId(event.target.value);
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const changeNameHandler = (event) => {
-    setUserName(event.target.value);
-  };
-
-  const changePasswordHandler = (event) => {
-    setUserPassword(event.target.value);
-  };
-
-  const changePasswordCheckHandler = (event) => {
-    setUserPasswordCheck(event.target.value);
-  };
-
-  const changeEmailHandler = (event) => {
-    setUserEmail(event.target.value);
-  };
-
-  const changeBirthdayHandler = (event) => {
-    setUserBirthday(event.target.value);
-  };
-
-  const changePhoneNumberHandler = (event) => {
-    setUserPhoneNumber(event.target.value);
-  };
-
-  const changeAreaHandler = (event) => {
-    setUserArea(event.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(userData.id);
+    const sendUserData = {
+      id: userData.id,
+      name: userData.name,
+      password: userData.password,
+      password_check: userData.password_check,
+      email: userData.email,
+      birthday: userData.birthday,
+      phone_number: userData.phone_number,
+      area: userData.area,
+    };
   };
 
   return (
     <div className={styles.pagebox}>
       <div className={styles.signbox}>
         <h1 className={styles.formtitle}>회원가입</h1>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label htmlFor="id">아이디</label>
-            <input type="text" id="id" name="id" onChange={changeIdHandler} />
+            <input type="text" id="id" name="id" onChange={changeHandler} />
             <div>
               <button className={styles.checkButton}>중복확인</button>
             </div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="name">이름</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={changeNameHandler}
-            />
+            <input type="text" id="name" name="name" onChange={changeHandler} />
             <div></div>
           </div>
           <div className={styles.formGroup}>
@@ -71,7 +60,7 @@ const Sign = () => {
               type="date"
               id="birthday"
               name="birthday"
-              onChange={changeBirthdayHandler}
+              onChange={changeHandler}
             />
             <div></div>
           </div>
@@ -81,7 +70,7 @@ const Sign = () => {
               type="email"
               id="email"
               name="email"
-              onChange={changeEmailHandler}
+              onChange={changeHandler}
             />
             <div>
               <button className={styles.checkButton}>중복확인</button>
@@ -93,7 +82,7 @@ const Sign = () => {
               type="password"
               id="password"
               name="password"
-              onChange={changePasswordHandler}
+              onChange={changeHandler}
             />
             <div></div>
           </div>
@@ -103,7 +92,7 @@ const Sign = () => {
               type="password"
               id="password_check"
               name="password_check"
-              onChange={changePasswordCheckHandler}
+              onChange={changeHandler}
             />
             <div></div>
           </div>
@@ -113,18 +102,13 @@ const Sign = () => {
               type="number"
               id="phone_number"
               name="phone_number"
-              onChange={changePhoneNumberHandler}
+              onChange={changeHandler}
             />
             <div></div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="area">거주 지역</label>
-            <input
-              type="text"
-              id="area"
-              name="area"
-              onChange={changeAreaHandler}
-            />
+            <input type="text" id="area" name="area" onChange={changeHandler} />
             <div></div>
           </div>
           <div className={styles.submit}>
