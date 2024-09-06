@@ -9,7 +9,6 @@ const Header = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 스크롤을 감지하여 상태 업데이트
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -39,30 +38,9 @@ const Header = () => {
       <div className={styles.utilityBar}>
         <div>
           <span className={styles.utilityItem}>공인인증서 내보내기</span>
-          <span className={styles.utilityItem}>
-            지원
-            <img
-              src="/assets/caretDown.png"
-              alt="로고"
-              className={styles.caretDown}
-            />
-          </span>
-          <span className={styles.utilityItem}>
-            화면 크기
-            <img
-              src="/assets/caretDown.png"
-              alt="로고"
-              className={styles.caretDown}
-            />
-          </span>
-          <span className={styles.utilityItem}>
-            Language
-            <img
-              src="/assets/caretDown.png"
-              alt="로고"
-              className={styles.caretDown}
-            />
-          </span>
+          <span className={styles.utilityItem}>지원</span>
+          <span className={styles.utilityItem}>화면 크기</span>
+          <span className={styles.utilityItem}>Language</span>
         </div>
       </div>
 

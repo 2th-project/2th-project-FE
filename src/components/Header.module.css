@@ -50,12 +50,6 @@
   text-decoration: underline;
 }
 
-.caretDown {
-  width: 12px;
-  height: 12px;
-  margin-left: 4px;
-}
-
 .mainHeader {
   width: 100%;
   max-width: 1280px;
