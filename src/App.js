@@ -8,11 +8,12 @@ import CreatePost from "./pages/community/CreatePost";
 import Post from "./pages/community/Post";
 import Sign from "./pages/sign/Sign";
 import Login from "./pages/login/Login";
+import HeaderLayout from "./pages/main/HeaderLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Header />,
+    element: <HeaderLayout />,
     children: [
       { path: "/", element: <Main /> },
       {
