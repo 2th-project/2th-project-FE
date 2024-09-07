@@ -6,3 +6,9 @@
   cursor: pointer;
   border-radius: 8px;
 }
+
+
+.largeButton {
+  padding: 15px 30px; /* 더 큰 패딩 */
+  font-size: 18px;    /* 더 큰 글꼴 크기 */
+}

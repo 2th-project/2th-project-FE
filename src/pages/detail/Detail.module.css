@@ -1,0 +1,225 @@
+/* Detail.module.css */
+
+:root {
+  --primary-color: #adcff2; /* 기본 색상 */
+  --primary-text-color: #fff; /* 텍스트 색상 */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px; /* 가로 길이 제한 */
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mainContent {
+  width: 100%;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: left; /* 왼쪽 정렬 */
+  width: 100%;
+  padding-left: 20px; /* 좌측 패딩 추가 */
+}
+
+
+
+/* 나머지 CSS 그대로 유지 */
+
+.infoTable, .newTable {
+  width: 100%;
+  margin-bottom: 20px;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+.infoTable th, .infoTable td, .newTable th, .newTable td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left; /* 원하시면 다른 정렬 방법으로 변경 가능 */
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.largeButton {
+  padding: 15px 30px;
+  font-size: 18px;
+}
+
+.activeTab {
+  background-color: var(--primary-color); /* 원하는 색상으로 설정 */
+}
+
+.headerWrapper {
+  display: flex;
+}
+
+.headerTitle {
+  padding-left: 20px; /* 헤더 텍스트 왼쪽 맞춤 */
+  margin-bottom: 0; /* 아래 여백 제거 */
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0; /* 헤더와의 간격 없음 */
+}
+
+.sidebarWrapper {
+  position: relative; /* 사이드바 위치 조정 */
+  top: -10px; /* 원하는 위치로 조정 */
+  margin-right: 20px; /* 컨텐츠와의 간격 */
+}
+
+.content {
+  flex: 1;
+}
+
+.contentWithSidebar {
+  display: flex;
+  width: 100%;
+}
+
+.sidebarContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  padding-left: 20px; /* 왼쪽에 여백 */
+  margin-bottom: 20px; /* 아래를 여백 */
+}
+
+.sidebarContainer .sidebar {
+  width: auto; /* 사이드바의 기본 너비 유지 */
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #adcff2;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  margin: 0;
+  padding-left: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.postList {
+  flex: 1;
+  padding: 20px;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.searchBar input {
+  padding: 5px;
+  width: 200px;
+  margin-right: 5px;
+}
+
+.searchBar button {
+  padding: 5px 10px;
+  background-color: #4f4f4f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #f8f8f8;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  font-weight: bold;
+  background-color: #e0e0e0;
+}
+
+.writeBtn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #4f4f4f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.infoBox {
+  width: 150%; /* 기존보다 폭을 늘림 */
+  margin-bottom: 20px; /* 아래쪽 여백 */
+  padding: 30px; /* 내부 여백 추가 */
+  border: 1px solid #ccc; /* 테두리 추가 */
+  box-sizing: border-box; /* 패딩과 테두리를 폭 계산에 포함 */
+}
+.description {
+  margin-bottom: 10px;
+}
+
+.infoTable th {
+  background-color: #f2f2f2;
+  text-align: center;
+  border-left: none; /* 왼쪽 경계선 제거 */
+  border-right: none; /* 오른쪽 경계선 제거 */
+}
+
+.infoTable td {
+  border-left: none; /* 왼쪽 경계선 제거 */
+  border-right: none; /* 오른쪽 경계선 제거 */
+}
+
+.button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: skyblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+}
+
+.activeContent {
+  background-color: var(--primary-color);
+}
