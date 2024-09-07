@@ -1,76 +1,72 @@
-// import React from "react";
-// import styles from "./WelfareList.module.css";
-
-// const exampleWelfareItems = Array(24).fill({
-//   title: "복지 혜택 제목",
-//   description: "이것은 복지 혜택에 대한 설명입니다.",
-// });
-
-// const WelfareList = () => {
-//   return (
-//     <div className={styles.welfareListContainer}>
-//       {exampleWelfareItems.map((item, index) => (
-//         <div key={index} className={styles.welfareBox}>
-//           <h3 className={styles.title}>{item.title}</h3>
-//           <p className={styles.description}>{item.description}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default WelfareList;
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./WelfareList.module.css";
 import WelfareListHeader from "./WelfareListHeader";
 import WelfareBox from "./WelfareBox";
 import FilterComponent from "./FilterComponent";
 
-const exampleWelfareItems = Array(24).fill({
-  title: "복지 혜택 제목",
-  description: "이것은 복지 혜택에 대한 설명입니다."
-});
-
 const WelfareList = () => {
-  const [layout, setLayout] = useState("grid"); // 'grid' or 'list'
   const [filters, setFilters] = useState({
-    selectedOption1: "",
-    selectedOption2: "",
-    selectedOptions3: []
+    userType: "",
+    applicationMethod: "",
+    serviceFields: [],
   });
-  const [welfareItems, setWelfareItems] = useState([]);
 
-  // 예시 API 호출 함수 (필터 적용)
-  const fetchWelfareItems = async (filters) => {
+  const [welfareItems, setWelfareItems] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(24);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const [layout, setLayout] = useState("grid"); // 'grid' or 'list'
+
+  // 필터 적용 시 API 호출
+  const fetchWelfareItems = useCallback(async () => {
+    const query = new URLSearchParams({
+      "user-type": filters.userType || "",
+      "application-method": filters.applicationMethod || "",
+      "service-field": filters.serviceFields.join(","),
+      page: page.toString(),
+      size: itemsPerPage.toString(),
+    });
+
     try {
-      // 여기에 필터에 맞는 데이터를 API로부터 가져오는 부분을 작성합니다.
-      const response = await fetch("/api/welfare-items", {
-        method: "POST",
-        body: JSON.stringify(filters),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+      const response = await fetch(`/main?${query.toString()}`);
       const data = await response.json();
-      setWelfareItems(data);
+      setWelfareItems(data.data.content);
+      setTotalItems(data.data.totalElements);
+      setTotalPages(data.data.totalPages);
     } catch (error) {
-      console.error("Error fetching welfare items:", error);
+      console.error("Failed to fetch welfare items", error);
     }
-  };
+  }, [filters, page, itemsPerPage]);
 
   useEffect(() => {
-    fetchWelfareItems(filters);
-  }, [filters]);
+    fetchWelfareItems();
+  }, [fetchWelfareItems]);
+
+  // 필터 변경 핸들러
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+    setPage(0); // 필터 변경 시 페이지를 0으로 초기화
+  };
+
+  // 아이템 표시 갯수 변경 핸들러
+  const handleItemsPerPageChange = (newSize) => {
+    setItemsPerPage(newSize);
+    setPage(0); // 표시 갯수 변경 시 페이지를 0으로 초기화
+  };
 
   return (
     <div>
-      <FilterComponent onFilterChange={setFilters} />
+      <FilterComponent onFilterChange={handleFilterChange} />
+
       <WelfareListHeader
-        totalItems={welfareItems.length}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={handleItemsPerPageChange}
         layout={layout}
         setLayout={setLayout}
       />
+
       <div
         className={
           layout === "grid"
@@ -84,6 +80,28 @@ const WelfareList = () => {
           ))
         ) : (
           <p>복지 혜택이 없습니다.</p>
+        )}
+      </div>
+
+      <div className={styles.pagination}>
+        {page > 0 && (
+          <button
+            onClick={() => setPage(page - 1)}
+            className={styles.pageButton}
+          >
+            이전
+          </button>
+        )}
+        <span>
+          페이지 {page + 1} / {totalPages}
+        </span>
+        {page < totalPages - 1 && (
+          <button
+            onClick={() => setPage(page + 1)}
+            className={styles.pageButton}
+          >
+            다음
+          </button>
         )}
       </div>
     </div>
