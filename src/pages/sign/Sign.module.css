@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #dfeafffa;
+  /* background-color: #dfeafffa; */
 }
 
 .signbox {
@@ -17,7 +17,7 @@
   font-size: 24px;
   margin-bottom: 30px;
   text-align: start;
-  padding: 20px 0;
+  padding: 20px;
   border-bottom: 2px solid black;
 }
 
@@ -38,9 +38,17 @@
   width: 120px;
   max-width: 120px;
   margin-right: 10px;
+  padding-left: 20px;
 }
 
-.formGroup input {
+.formGroupValid {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.formGroupinput {
   width: 320px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -48,7 +56,7 @@
   box-sizing: border-box;
 }
 
-.formGroup div {
+.formGroupButton {
   display: flex;
   justify-content: flex-end;
   width: 150px;
@@ -75,6 +83,8 @@
   padding: 10px 0;
   border-top: 2px solid black;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 .submitButton {
   padding: 10px;
@@ -85,9 +95,24 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
-  width: 100%;
+  width: 150px;
 }
 
 .submitButton:hover {
   background-color: #adcff2;
+}
+
+.vaildInput {
+  width: 320px;
+  padding: 8px;
+  border: 1px solid red;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.vaildError {
+  width: 300px;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
