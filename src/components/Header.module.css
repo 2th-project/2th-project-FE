@@ -1,17 +1,27 @@
 .header {
+  position: sticky;
+  top: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1000;
 }
 
-.header[data-page="main"] {
+.header.mainPage {
   color: white;
 }
 
+.header.scrolled {
+  background-color: white;
+  color: #1d1d1d;
+  box-shadow: 0 3px 8px -3px rgb(216, 216, 216);
+}
+
 .utilityBar {
+  max-width: 1280px;
   width: 100%;
   padding: 12px;
   display: flex;
@@ -40,14 +50,9 @@
   text-decoration: underline;
 }
 
-.caretDown {
-  width: 12px;
-  height: 12px;
-  margin-left: 4px;
-}
-
 .mainHeader {
   width: 100%;
+  max-width: 1280px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,7 +70,7 @@
 }
 
 .logoText {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-left: 20px;
   font-size: 2rem;
   font-weight: bold;
@@ -88,9 +93,6 @@
 }
 
 .divider {
-  position: absolute;
-  top: 120px;
-  left: 0;
   width: 100vw;
   border: none;
   border-top: 1px solid #d8d8d8;
@@ -98,9 +100,6 @@
 }
 
 .divider02 {
-  position: absolute;
-  top: 176px;
-  left: 0;
   width: 100vw;
   border: none;
   border-top: 1px solid #d8d8d8;
@@ -109,6 +108,7 @@
 
 .navbar {
   width: 100%;
+  max-width: 1280px;
   padding: 18px 0;
   display: flex;
   justify-content: flex-start;

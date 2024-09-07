@@ -1,46 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
   const isMainPage = location.pathname === "/";
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleNavigate = (path) => {
     navigate(path);
   };
 
   return (
-    <header className={styles.header} data-page={isMainPage ? "main" : "other"}>
+    <header
+      className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
+        isMainPage && !isScrolled ? styles.mainPage : ""
+      }`}
+    >
       <div className={styles.utilityBar}>
         <div>
           <span className={styles.utilityItem}>공인인증서 내보내기</span>
-          <span className={styles.utilityItem}>
-            지원
-            <img
-              src="/assets/caretDown.png"
-              alt="로고"
-              className={styles.caretDown}
-            />
-          </span>
-          <span className={styles.utilityItem}>
-            화면 크기
-            <img
-              src="/assets/caretDown.png"
-              alt="로고"
-              className={styles.caretDown}
-            />
-          </span>
-          <span className={styles.utilityItem}>
-            Language
-            <img
-              src="/assets/caretDown.png"
-              alt="로고"
-              className={styles.caretDown}
-            />
-          </span>
+          <span className={styles.utilityItem}>지원</span>
+          <span className={styles.utilityItem}>화면 크기</span>
+          <span className={styles.utilityItem}>Language</span>
         </div>
       </div>
 
@@ -53,7 +53,7 @@ const Header = () => {
             onClick={() => handleNavigate("/")}
           />
           <span className={styles.logoText} onClick={() => handleNavigate("/")}>
-            복지 24
+            하나로 복지
           </span>
         </div>
         <div className={styles.userMenu}>
