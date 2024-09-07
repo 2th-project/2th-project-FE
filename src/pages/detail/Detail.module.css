@@ -1,54 +1,57 @@
 :root {
-  --primary-color: #adcff2; 
-  --primary-text-color: #fff; 
+  --primary-color: #adcff2;
+  --primary-text-color: #fff;
 }
 
 .layoutContainer {
   display: flex;
-  margin: 0; 
-  padding: 0; 
-}
-
-.sidebarWrapper {
-  width: 250px; 
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  flex-grow: 1;
-  margin: 0 auto;
-  padding: 10px; 
-  width: 70%;
-  height: auto; /* 자동으로 높이를 계산하여 할당 */
+  margin: 2rem;
+  padding: 1rem;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  height: auto;
   box-sizing: border-box;
-  overflow: hidden; /* 넘치는 내용을 숨깁니다. 필요에 따라 조정 */
+  overflow: hidden;
 }
 
 .headerTitle {
   margin: 0;
   padding: 0;
+  text-align: left;
+}
+
+/* 새로운 클래스 추가 */
+.sidebarWrapperCustom {
+  margin-left: 16.5rem; /* 왼쪽 여백 추가하여 오른쪽으로 이동 */
 }
 
 .headerContent {
   width: 100%;
-  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 2rem;
 }
 
 .infoBox {
   width: 100%;
-  margin-top: 10px; 
-  margin-bottom: 10px;
+  margin: 2rem 0;
   padding: 20px;
-  border: 1px solid #ccc; 
-  box-sizing: border-box; 
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .newTable {
   width: 100%;
   margin-bottom: 10px;
-  table-layout: fixed; 
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
@@ -68,7 +71,7 @@
 
 .infoTable {
   width: 100%;
-  table-layout: fixed; 
+  table-layout: fixed;
   border-collapse: collapse;
   margin-bottom: 10px;
 }
@@ -80,17 +83,17 @@
 }
 
 .infoTable th {
-  width: 25%; 
+  width: 25%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-left: none; 
-  border-right: none; 
+  border-left: none;
+  border-right: none;
   border-top: none;
 }
 
 .infoTable td {
-  border-left: none; 
+  border-left: none;
   border-right: none;
 }
 
@@ -101,29 +104,29 @@
 }
 
 .infoTable tbody td {
-  border: none; 
-  padding: 5px 0; 
+  border: none;
+  padding: 5px 0;
 }
 
 .buttonWrapper {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .largeButton {
   padding: 50px 50px;
-  font-size: 25px;    
+  font-size: 25px;
 }
 
 .activeTab {
-  background-color: var(--primary-color); 
+  background-color: var(--primary-color);
 }
 
 .layout {
   display: flex;
   align-items: flex-start;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .content {
@@ -171,7 +174,7 @@ th {
   padding: 10px;
   font-size: 1rem;
   text-align: center;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
