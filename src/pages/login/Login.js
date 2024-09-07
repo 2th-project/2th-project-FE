@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
 
+const API_URL = "";
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,6 +50,35 @@ const Login = () => {
     </div>
   );
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const { id, password } = userData;
+
+    try {
+      const response = await fetch(`${API_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: { id, password },
+      });
+
+      if (!response.ok) {
+        throw new Error("로그인 실패");
+      }
+
+      const data = await response.json();
+      const { token } = data;
+
+      localStorage.setItem("token", token);
+
+      console.log("로그인 성공");
+    } catch (error) {
+      console.error("로그인 실패", error);
+    }
+  };
+
   return (
     <div className={styles.styleBox}>
       <div className={styles.loginBox}>
@@ -65,7 +95,9 @@ const Login = () => {
               placeholder="비밀번호"
             />
           </div>
-          <button className={styles.loninButton}>로그인</button>
+          <button className={styles.loninButton} onClick={handleSubmit}>
+            로그인
+          </button>
           <button className={styles.findPassword} onClick={openModal}>
             비밀번호 찾기
           </button>
