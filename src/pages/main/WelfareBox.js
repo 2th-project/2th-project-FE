@@ -6,8 +6,10 @@ const WelfareBox = ({ item, layout }) => {
     <div
       className={layout === "grid" ? styles.welfareBox : styles.welfareListItem}
     >
-      <h3 className={styles.title}>{item.title}</h3>
-      <p className={styles.description}>{item.description}</p>
+      <h3 className={styles.title}>{item.serviceName}</h3>
+      <p className={styles.supervisingAgency}>{item.supervisingAgencyName}</p>
+      <p className={styles.applicationDeadline}>{item.applicationDeadline}</p>
+      <p className={styles.applicationMethod}>{item.applicationMethod}</p>
     </div>
   );
 };

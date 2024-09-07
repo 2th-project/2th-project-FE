@@ -2,16 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
   max-width: 1280px;
-  margin: 0 auto;
 }
 
 .totalItems {
   font-size: 1.3rem;
-  color: #000;
   font-weight: bold;
+  color: #000;
 }
 
 .controls {
@@ -23,13 +21,27 @@
 .select {
   font-size: 1.1rem;
   font-weight: bold;
-  border: none;
-  margin-bottom: 4px;
+  border: 1px solid #727272;
+  border-radius: 4px;
+  padding: 5px;
+  margin-left: 5px;
 }
 
 .iconButton {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.iconButton.active {
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
