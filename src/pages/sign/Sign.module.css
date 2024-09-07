@@ -41,7 +41,14 @@
   padding-left: 20px;
 }
 
-.formGroup input {
+.formGroupValid {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.formGroupinput {
   width: 320px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -49,7 +56,7 @@
   box-sizing: border-box;
 }
 
-.formGroup div {
+.formGroupButton {
   display: flex;
   justify-content: flex-end;
   width: 150px;
@@ -93,4 +100,19 @@
 
 .submitButton:hover {
   background-color: #adcff2;
+}
+
+.vaildInput {
+  width: 320px;
+  padding: 8px;
+  border: 1px solid red;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.vaildError {
+  width: 300px;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }

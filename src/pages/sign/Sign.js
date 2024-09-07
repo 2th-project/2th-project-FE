@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Sign.module.css";
 
+const API_URL = "";
 const Sign = () => {
   const [userData, setUserData] = useState({
     id: "",
@@ -12,9 +13,66 @@ const Sign = () => {
     phone_number: "",
     area: "",
   });
+  const [isValidId, setIsValidId] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
+  const [isValidPasswordCheck, setIsValidPasswordCheck] = useState(true);
+
+  //유효성 검사를 위한 함수
+  const validInput = (name, value) => {
+    let isChecked;
+
+    switch (name) {
+      case "id":
+        const idCheck = /^[a-zA-Z0-9]{8,}$/;
+        isChecked = idCheck.test(value);
+        setIsValidId(isChecked);
+        break;
+      case "password":
+        const passwordCheck = /^[a-zA-Z0-9]{10,}$/;
+        isChecked = passwordCheck.test(value);
+        setIsValidPassword(isChecked);
+        break;
+      case "password_check":
+        isChecked = value === userData.password;
+        setIsValidPasswordCheck(isChecked);
+        break;
+      default:
+        break;
+    }
+    return isChecked;
+  };
+
+  const handleCheck = async (name) => {
+    const value = userData[name];
+    if (!value) {
+      alert("값을 입력해 주세요.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: { [name]: value },
+      });
+
+      const data = await response.json();
+      if (data.isAvailable) {
+        alert("사용 가능합니다.");
+      } else {
+        alert("이미 사용중입니다.");
+      }
+    } catch (error) {
+      alert("오류가 발생했습니다. 다시 시도해 주세요.");
+    }
+  };
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
+
+    validInput(name, value);
 
     setUserData((prevData) => ({
       ...prevData,
@@ -22,9 +80,15 @@ const Sign = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(userData.id);
+    console.log(userData);
+
+    if (!isValidId || !isValidPassword || !isValidPasswordCheck) {
+      alert("입력 정보를 확인해주세요.");
+      return;
+    }
+
     const sendUserData = {
       id: userData.id,
       name: userData.name,
@@ -35,6 +99,27 @@ const Sign = () => {
       phone_number: userData.phone_number,
       area: userData.area,
     };
+
+    try {
+      const response = await fetch(`${API_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: sendUserData,
+      });
+
+      if (!response.ok) {
+        throw new Error("네트워크 응답이 올바르지 않습니다.");
+      }
+
+      const result = await response.json();
+      console.log("회원가입 성공:", result);
+      alert("회원가입이 완료되었습니다.");
+    } catch (error) {
+      console.error("회원가입 실패:", error);
+      alert("회원가입에 실패했습니다.");
+    }
   };
 
   return (
@@ -44,15 +129,42 @@ const Sign = () => {
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label htmlFor="id">아이디</label>
-            <input type="text" id="id" name="id" onChange={changeHandler} />
-            <div>
-              <button className={styles.checkButton}>중복확인</button>
+            <div className={styles.formGroupValid}>
+              <input
+                type="text"
+                id="id"
+                name="id"
+                onChange={changeHandler}
+                className={
+                  !isValidId ? styles.vaildInput : styles.formGroupinput
+                }
+              />
+              {!isValidId && (
+                <div className={styles.vaildError}>
+                  아이디는 8자 이상의 영문, 숫자로 조합
+                </div>
+              )}
+            </div>
+            <div className={styles.formGroupButton}>
+              <button
+                type="button"
+                className={styles.checkButton}
+                onClick={() => handleCheck("id")}
+              >
+                중복확인
+              </button>
             </div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="name">이름</label>
-            <input type="text" id="name" name="name" onChange={changeHandler} />
-            <div></div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={changeHandler}
+              className={styles.formGroupinput}
+            />
+            <div className={styles.formGroupButton}></div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="birthday">생년월일</label>
@@ -61,8 +173,10 @@ const Sign = () => {
               id="birthday"
               name="birthday"
               onChange={changeHandler}
+              className={styles.formGroupinput}
+              placeholder="YYYY-MM-DD"
             />
-            <div></div>
+            <div className={styles.formGroupButton}></div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="email">이메일</label>
@@ -71,30 +185,57 @@ const Sign = () => {
               id="email"
               name="email"
               onChange={changeHandler}
+              className={styles.formGroupinput}
             />
-            <div>
-              <button className={styles.checkButton}>중복확인</button>
+            <div className={styles.formGroupButton}>
+              <button
+                type="button"
+                className={styles.checkButton}
+                onClick={() => handleCheck("email")}
+              >
+                중복확인
+              </button>
             </div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="password">비밀번호</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              onChange={changeHandler}
-            />
-            <div></div>
+            <div className={styles.formGroupValid}>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={changeHandler}
+                className={
+                  !isValidPassword ? styles.vaildInput : styles.formGroupinput
+                }
+              />
+              {!isValidPassword && (
+                <div className={styles.vaildError}>
+                  비밀번호는 10자 이상의 영문, 숫자로 조합
+                </div>
+              )}
+            </div>
+            <div className={styles.formGroupButton}></div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="password_check">비밀번호 확인</label>
-            <input
-              type="password"
-              id="password_check"
-              name="password_check"
-              onChange={changeHandler}
-            />
-            <div></div>
+            <div className={styles.formGroupValid}>
+              <input
+                type="password"
+                id="password_check"
+                name="password_check"
+                onChange={changeHandler}
+                className={
+                  !isValidPassword ? styles.vaildInput : styles.formGroupinput
+                }
+              />
+              {!isValidPasswordCheck && (
+                <div className={styles.vaildError}>
+                  비밀번호가 일치하지 않습니다.
+                </div>
+              )}
+            </div>
+            <div className={styles.formGroupButton}></div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="phone_number">연락처</label>
@@ -102,14 +243,22 @@ const Sign = () => {
               type="number"
               id="phone_number"
               name="phone_number"
+              placeholder="010-1234-5678"
               onChange={changeHandler}
+              className={styles.formGroupinput}
             />
-            <div></div>
+            <div className={styles.formGroupButton}></div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="area">거주 지역</label>
-            <input type="text" id="area" name="area" onChange={changeHandler} />
-            <div></div>
+            <input
+              type="text"
+              id="area"
+              name="area"
+              onChange={changeHandler}
+              className={styles.formGroupinput}
+            />
+            <div className={styles.formGroupButton}></div>
           </div>
           <div className={styles.submit}>
             <button type="submit" className={styles.submitButton}>
