@@ -22,29 +22,30 @@ function Detail() {
   };
 
   const sidebarItems = [
-    { name: "Item 1", active: true },
-    { name: "Item 2", active: false },
-    { name: "Item 3", active: false },
+    { name: "상세정보", active: true },
+    { name: "생애주기", active: false },
   ];
 
   return (
     <>
       <Header className={styles.headerTitle} />
       <div className={styles.layoutContainer}>
-        <Sidebar
-          title="Sidebar Title"
-          items={sidebarItems}
-          onItemClick={() => {}}
-        />
+        <div className={styles.sidebarWrapperCustom}>
+          <Sidebar
+            title="복지서비스 상세"
+            items={sidebarItems}
+            onItemClick={() => {}}
+          />
+        </div>
         <div className={styles.container}>
           <div className={styles.headerContent}>
             <h3>복지서비스 상세</h3>
             <p>내 상황에 맞는 다양한 복지 서비스를 찾을 수 있습니다</p>
           </div>
-
           <div className={styles.infoBox}>
             <h1>서비스명</h1>
             <p>서비스 목적 요약</p>
+            <p>담당부처 소관기관명</p>
             <table className={styles.newTable}>
               <thead>
                 <tr>
@@ -106,13 +107,11 @@ function Detail() {
               </tbody>
             </table>
           </div>
-
           <div className={styles.buttonWrapper}>
             <Button onClick={handleButtonClick} className={styles.largeButton}>
               신청하기
             </Button>
           </div>
-
           <div className={styles.infoBox}>
             <table className={styles.infoTable}>
               <thead>
@@ -313,6 +312,7 @@ function Detail() {
               </tbody>
             </table>
           </div>
+          소관기관명 고용노동부
         </div>
       </div>
       <br />
