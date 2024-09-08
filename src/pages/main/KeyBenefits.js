@@ -46,9 +46,13 @@ const KeyBenefits = () => {
     for (let i = 0; i < visibleBoxes; i++) {
       const index = (currentIndex + i) % totalBenefits;
       boxesToShow.push(
-        <div className={styles.benefitBox} key={benefitBoxes[index].id}>
+        <a
+          href="/detail"
+          className={styles.benefitBox}
+          key={benefitBoxes[index].id}
+        >
           {benefitBoxes[index].content}
-        </div>
+        </a>
       );
     }
     return boxesToShow;
