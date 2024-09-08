@@ -1,8 +1,6 @@
 import styles from "./PostList.module.css";
 
 function PostList({ data, onTitleClick }) {
-  const reversedData = [...data].reverse();
-
   return (
     <div className={styles.table}>
       <div className={styles.tableHeader}>
@@ -15,7 +13,7 @@ function PostList({ data, onTitleClick }) {
         </div>
       </div>
       <div className={styles.tableBody}>
-        {reversedData.map((post) => (
+        {data.map((post) => (
           <div className={styles.tableRow} key={post.id}>
             <div className={styles.tableCell}>{post.id}</div>
             <div className={styles.tableCell}>{post.userId}</div>
