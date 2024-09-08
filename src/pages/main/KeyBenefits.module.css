@@ -22,14 +22,20 @@
 
 .benefitBox {
   width: 413px;
-  height: 365px;
-  background-color: #f0f0f0;
+  height: 220px;
   border: 1px solid #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
 }
+
+.benefitBox:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
 .controls {
   display: flex;
   justify-content: flex-end;
@@ -46,7 +52,7 @@
 }
 
 .currentPage {
-  color: #007bff; /* 강조된 파란색 */
+  color: #007bff;
 }
 
 .buttons {
