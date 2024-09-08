@@ -4,6 +4,7 @@ import KeyBenefits from "./KeyBenefits";
 import QuickFind from "./QuickFind";
 import FilterComponent from "./FilterComponent";
 import WelfareList from "./WelfareList";
+import ChatWidget from "./ChatWidget";
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
         <QuickFind />
         {/* <FilterComponent /> */}
         <WelfareList />
+        <ChatWidget />
       </main>
     </>
   );
