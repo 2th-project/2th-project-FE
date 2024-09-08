@@ -1,5 +1,24 @@
 @import "../../styles/variables.module.css";
 
+.searchBox {
+  margin: 20px 0;
+}
+
+.totalPosts {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.totalPosts img {
+  width: 14px;
+  margin-right: 5px;
+}
+
 .writeBtn {
   margin-top: 20px;
 }
@@ -7,10 +26,6 @@
 .buttonContainer {
   display: flex;
   justify-content: flex-end;
-}
-
-.searchBox {
-  margin: 20px 0;
 }
 
 .pagination {

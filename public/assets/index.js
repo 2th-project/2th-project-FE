@@ -11,3 +11,4 @@ export { default as magnifyingGlass } from "./assets.magnifyingGlass";
 export { default as userPlus } from "./assets.userPlus";
 export { default as downloadSimple } from "./assets.downloadSimple";
 export { default as favicon } from "./assets.favicon";
+export { default as board } from "./assets.ico_docu";
