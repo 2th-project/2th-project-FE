@@ -9,12 +9,12 @@ const ChatWidget = () => {
   };
 
   return (
-    <div className={styles.chatWidgetContainer}>
-      {!isOpen && (
+    <>
+      <div className={styles.chatButtonContainer}>
         <button className={styles.chatButton} onClick={toggleChat}>
-          💬 채팅 시작
+          {isOpen ? "💬 채팅 닫기" : "💬 채팅 시작"}
         </button>
-      )}
+      </div>
 
       {isOpen && (
         <div className={styles.chatBox}>
@@ -24,7 +24,7 @@ const ChatWidget = () => {
               <h3>하나로 복지 상담원</h3>
             </div>
             <button className={styles.closeButton} onClick={toggleChat}>
-              닫기
+              ✖
             </button>
           </div>
           <div className={styles.chatBody}>
@@ -36,7 +36,7 @@ const ChatWidget = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
