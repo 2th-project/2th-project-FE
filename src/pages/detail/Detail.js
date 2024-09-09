@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 import Sidebar from "../../components/common/sidebar/Sidebar";
 
 const Detail = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [activeTab1, setActiveTab1] = useState("지원 대상");
   const [activeTab2, setActiveTab2] = useState("주요 내용");
@@ -17,8 +17,9 @@ const Detail = () => {
     axios
       .get(`https://your-backend-domain.com/detail/${id}`)
       .then((response) => {
-        setData(response.data); 
-      .catch((error) => console.error("Error fetching details:", error));
+        setData(response.data);
+      })
+      .catch((error) => console.error("Error fetching details:", error)); // 수정된 라인
   }, [id]);
 
   const handleTabClick1 = (tab) => {
@@ -56,12 +57,12 @@ const Detail = () => {
         <div className={styles.mainContent}>
           <div className={styles.headerContent}>
             <h3>{data.title}</h3>
-            <p>{data.subtitle}</p> 
+            <p>{data.subtitle}</p>
           </div>
           <div className={styles.infoBox}>
-            <h1>{data.serviceName}</h1> 
-            <p>{data.serviceSummary}</p> 
-            <p>{data.department}</p> 
+            <h1>{data.serviceName}</h1>
+            <p>{data.serviceSummary}</p>
+            <p>{data.department}</p>
             <table className={styles.newTable}>
               <thead>
                 <tr>
@@ -103,25 +104,21 @@ const Detail = () => {
                 {activeTab1 === "지원 대상" && (
                   <tr>
                     <td colSpan="4">{data.eligibility}</td>{" "}
-                    
                   </tr>
                 )}
                 {activeTab1 === "서비스 내용" && (
                   <tr>
                     <td colSpan="4">{data.serviceContents}</td>{" "}
-                
                   </tr>
                 )}
                 {activeTab1 === "신청 방법" && (
                   <tr>
                     <td colSpan="4">{data.applicationMethod}</td>{" "}
-                 
                   </tr>
                 )}
                 {activeTab1 === "추가 정보" && (
                   <tr>
                     <td colSpan="4">{data.additionalInfo}</td>{" "}
-                    
                   </tr>
                 )}
               </tbody>
@@ -343,7 +340,6 @@ const Detail = () => {
             </table>
           </div>
           <p>소관기관명 {data.departmentName}</p>{" "}
-
         </div>
       </div>
       <Footer />
