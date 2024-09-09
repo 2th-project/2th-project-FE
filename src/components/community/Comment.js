@@ -1,34 +1,56 @@
 import React, { useState } from "react";
 import styles from "./Comment.module.css";
+import Modal from "./../common/modal/Modal";
 
 function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
-  const [newComment, setNewComment] = useState(""); // 새 댓글 내용
-  const [editMode, setEditMode] = useState(null); // 현재 수정 중인 댓글 ID
-  const [editContent, setEditContent] = useState(""); // 수정 중인 댓글 내용
+  const [newComment, setNewComment] = useState("");
+  const [editMode, setEditMode] = useState(null);
+  const [editContent, setEditContent] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [confirmDelete, setConfirmDelete] = useState(null);
 
-  // 댓글 추가
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
       onAddComment(newComment);
-      setNewComment(""); // 입력 후 초기화
+      setNewComment("");
     }
   };
 
-  // 수정 모드로 변경
   const handleEditClick = (comment) => {
     setEditMode(comment.id);
-    setEditContent(comment.content); // 현재 댓글 내용을 수정창에 채움
+    setEditContent(comment.content);
   };
 
-  // 댓글 저장
+  const handleCancelClick = () => {
+    setEditMode(null);
+  };
+
   const handleSaveClick = (id) => {
     onEditComment(id, editContent);
-    setEditMode(null); // 수정 모드 해제
+    setEditMode(null);
+    setModalMessage("댓글이 수정되었습니다");
+    setShowModal(true);
   };
 
-  // 수정 취소
-  const handleCancelClick = () => {
-    setEditMode(null); // 수정 모드 해제
+  const handleDeleteClick = (id) => {
+    setModalMessage("댓글을 삭제하시겠습니까?");
+    setConfirmDelete(id);
+    setShowModal(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (confirmDelete !== null) {
+      onDeleteComment(confirmDelete);
+      setConfirmDelete(null);
+      setModalMessage("댓글이 삭제되었습니다.");
+      setShowModal(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setConfirmDelete(null); // 모달을 닫을 때 삭제 확인 상태 초기화
   };
 
   return (
@@ -69,6 +91,7 @@ function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
               >
                 저장
               </button>
+              <div className={styles.divider}></div>
               <button
                 className={styles.commentCancelBtn}
                 onClick={handleCancelClick}
@@ -86,7 +109,7 @@ function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
               </button>
               <button
                 className={styles.commentDeleteBtn}
-                onClick={() => onDeleteComment(comment.id)}
+                onClick={() => handleDeleteClick(comment.id)}
               >
                 삭제
               </button>
@@ -94,6 +117,14 @@ function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
           )}
         </div>
       ))}
+      {showModal && (
+        <Modal
+          message={modalMessage}
+          onClose={
+            confirmDelete !== null ? handleConfirmDelete : handleCloseModal
+          }
+        />
+      )}
     </div>
   );
 }

@@ -13,7 +13,6 @@ const dummyData = [
     title: "잠실역 환승구간 에어컨 추가 설치건",
     content: "잠실역 8호선-2호선 환승통로 냉방 관리에 관심을 기울여 주길 요청.",
     date: "2024-07-18",
-    views: 123,
   },
   {
     id: 2,
@@ -21,7 +20,6 @@ const dummyData = [
     title: "제목2",
     content: "내용2",
     date: "2024-07-19",
-    views: 101,
   },
   {
     id: 3,
@@ -29,7 +27,6 @@ const dummyData = [
     title: "제목3",
     content: "내용3",
     date: "2024-07-20",
-    views: 81,
   },
   {
     id: 4,
@@ -37,7 +34,6 @@ const dummyData = [
     title: "제목4",
     content: "내용4",
     date: "2024-07-21",
-    views: 8,
   },
   {
     id: 5,
@@ -45,7 +41,6 @@ const dummyData = [
     title: "제목5",
     content: "내용5",
     date: "2024-07-23",
-    views: 21,
   },
   {
     id: 6,
@@ -53,7 +48,6 @@ const dummyData = [
     title: "제목6",
     content: "내용6",
     date: "2024-07-24",
-    views: 5,
   },
   {
     id: 7,
@@ -61,7 +55,6 @@ const dummyData = [
     title: "제목7",
     content: "내용7",
     date: "2024-07-25",
-    views: 56,
   },
   {
     id: 8,
@@ -69,7 +62,6 @@ const dummyData = [
     title: "제목8",
     content: "내용8",
     date: "2024-07-26",
-    views: 34,
   },
   {
     id: 9,
@@ -77,7 +69,6 @@ const dummyData = [
     title: "제목9",
     content: "내용9",
     date: "2024-07-27",
-    views: 12,
   },
   {
     id: 10,
@@ -85,7 +76,6 @@ const dummyData = [
     title: "제목10",
     content: "내용10",
     date: "2024-07-28",
-    views: 7,
   },
   {
     id: 11,
@@ -93,7 +83,6 @@ const dummyData = [
     title: "제목11",
     content: "내용11",
     date: "2024-07-29",
-    views: 23,
   },
   {
     id: 12,
@@ -101,7 +90,6 @@ const dummyData = [
     title: "제목12",
     content: "내용12",
     date: "2024-07-30",
-    views: 6,
   },
   {
     id: 13,
@@ -109,7 +97,6 @@ const dummyData = [
     title: "제목7",
     content: "내용7",
     date: "2024-07-25",
-    views: 56,
   },
   {
     id: 14,
@@ -117,7 +104,6 @@ const dummyData = [
     title: "제목8",
     content: "내용8",
     date: "2024-07-26",
-    views: 34,
   },
   {
     id: 15,
@@ -125,7 +111,6 @@ const dummyData = [
     title: "제목9",
     content: "내용9",
     date: "2024-07-27",
-    views: 12,
   },
   {
     id: 16,
@@ -133,7 +118,6 @@ const dummyData = [
     title: "제목10",
     content: "내용10",
     date: "2024-07-28",
-    views: 7,
   },
   {
     id: 17,
@@ -141,7 +125,6 @@ const dummyData = [
     title: "제목11",
     content: "내용11",
     date: "2024-07-29",
-    views: 23,
   },
   {
     id: 18,
@@ -149,7 +132,6 @@ const dummyData = [
     title: "제목12",
     content: "내용12",
     date: "2024-07-30",
-    views: 6,
   },
   {
     id: 19,
@@ -157,7 +139,6 @@ const dummyData = [
     title: "제목9",
     content: "내용9",
     date: "2024-07-27",
-    views: 12,
   },
   {
     id: 20,
@@ -165,7 +146,6 @@ const dummyData = [
     title: "제목10",
     content: "내용10",
     date: "2024-07-28",
-    views: 7,
   },
   {
     id: 21,
@@ -173,7 +153,6 @@ const dummyData = [
     title: "제목11",
     content: "내용11",
     date: "2024-07-29",
-    views: 23,
   },
   {
     id: 22,
@@ -181,7 +160,6 @@ const dummyData = [
     title: "제목12",
     content: "내용12",
     date: "2024-07-30",
-    views: 6,
   },
 ];
 
@@ -230,7 +208,7 @@ function BulletinBoard() {
     <div>
       <Search className={styles.searchBox} onSearch={handleSearch} />
       <div className={styles.totalPosts}>
-        <img src="assets/ico_docu.png" alt="board" />
+        <img src="/assets/ico_docu.png" alt="board" />
         전체 {filteredData.length}건 ({currentPage} / {totalPages} 페이지)
       </div>
       <PostList data={currentPosts} onTitleClick={handleTitleClick} />
@@ -240,7 +218,7 @@ function BulletinBoard() {
           className={styles.writeBtn}
           onClick={handleWriteClick}
         >
-          글쓰기
+          게시글 작성
         </Button>
       </div>
       <Pagination

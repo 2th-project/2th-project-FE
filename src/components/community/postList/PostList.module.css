@@ -38,8 +38,7 @@
   color: #666;
 }
 
-.tableBody .tableCell:nth-child(2),
-.tableBody .tableCell:nth-child(5) {
+.tableBody .tableCell:nth-child(2) {
   color: #222;
 }
 
@@ -50,8 +49,7 @@
   color: #222;
 }
 
-.tableCell:nth-child(1),
-.tableCell:nth-child(5) {
+.tableCell:nth-child(1) {
   flex: 0.5;
 }
 
