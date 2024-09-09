@@ -90,7 +90,7 @@ const Sign = () => {
     }
 
     const sendUserData = {
-      id: userData.id,
+      uid: userData.id,
       name: userData.name,
       password: userData.password,
       password_check: userData.password_check,
