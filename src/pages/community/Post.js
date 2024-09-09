@@ -4,16 +4,37 @@ import styles from "./Post.module.css";
 import Comment from "./../../components/community/Comment";
 import Button from "./../../components/common/button/Button";
 
+const initialComments = {
+  1: [
+    {
+      id: 1,
+      userId: "user1",
+      content: "첫 번째 댓글입니다.",
+      date: "2024-07-21",
+    },
+    {
+      id: 2,
+      userId: "user2",
+      content: "두 번째 댓글입니다.",
+      date: "2024-07-23",
+    },
+  ],
+  2: [
+    {
+      id: 1,
+      userId: "user1",
+      content: "다른 게시글의 첫 번째 댓글입니다.",
+      date: "2024-07-25",
+    },
+  ],
+};
+
 function Post() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { title, content, userId, date } = location.state;
+  const { id, title, content, userId, date } = location.state;
 
-  const [comments, setComments] = useState([
-    { id: 1, userId: "user1", content: "첫 번째 댓글입니다." },
-    { id: 2, userId: "user2", content: "두 번째 댓글입니다." },
-    { id: 3, userId: "user3", content: "세 번째 댓글입니다." },
-  ]);
+  const [comments, setComments] = useState(initialComments[id] || []);
 
   const handleEditPost = () => {
     navigate("/community/board/create", {
@@ -30,17 +51,17 @@ function Post() {
     setComments([...comments, newComment]);
   };
 
-  const handleEditComment = (id, newContent) => {
+  const handleEditComment = (commentId, newContent) => {
     setComments((prevComments) =>
       prevComments.map((comment) =>
-        comment.id === id ? { ...comment, content: newContent } : comment
+        comment.id === commentId ? { ...comment, content: newContent } : comment
       )
     );
   };
 
-  const handleDeleteComment = (id) => {
+  const handleDeleteComment = (commentId) => {
     setComments((prevComments) =>
-      prevComments.filter((comment) => comment.id !== id)
+      prevComments.filter((comment) => comment.id !== commentId)
     );
   };
 
@@ -69,6 +90,7 @@ function Post() {
         </div>
       </div>
       <Comment
+        postId={id}
         comments={comments}
         onAddComment={handleAddComment}
         onEditComment={handleEditComment}

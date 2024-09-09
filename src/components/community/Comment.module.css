@@ -29,21 +29,44 @@
   height: 60px;
 }
 
-.commentItem {
+.commentItemBox {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
 }
 
+.commentItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentInfo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 .commentUser {
-  width: 100px;
   font-weight: bold;
   text-align: center;
+  color: var(--text-color1);
+}
+
+.commentDate {
+  color: var(--text-color3);
 }
 
 .commentContent {
   flex-grow: 1;
+}
+
+.commentBtnBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .commentEditBtn,
