@@ -1,0 +1,36 @@
+@import "../../../styles/variables.module.css";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--text-color1);
+}
+
+button:hover {
+  background-color: #d0d0d0;
+}
+
+button:disabled,
+button:disabled:hover {
+  background-color: white;
+  color: #e0e0e0;
+  cursor: default;
+}
+
+.active {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
