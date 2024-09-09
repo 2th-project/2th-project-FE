@@ -1,28 +1,34 @@
-const admin = require("firebase-admin");
+const faunadb = require("faunadb");
 const fs = require("fs");
+const q = faunadb.query;
 
-const serviceAccount = require("./path/to/serviceAccountKey.json"); // 서비스 계정 키 파일 경로
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://<DATABASE_NAME>.firebaseio.com", // DB URL 변경
+// FaunaDB 클라이언트 설정
+const client = new faunadb.Client({
+  secret: "YOUR_FAUNADB_SECRET_KEY",
 });
-
-const db = admin.firestore();
 
 // JSON 데이터 파일 로드
 const rawdata = fs.readFileSync("data.json");
 const data = JSON.parse(rawdata);
 
-// 데이터 Firestore에 업로드
+// 데이터 FaunaDB에 업로드
 const uploadData = async () => {
-  const batch = db.batch();
-  Object.keys(data).forEach((key) => {
-    const docRef = db.collection("data").doc(key); // 컬렉션 이름: 'data'
-    batch.set(docRef, data[key]);
-  });
-  await batch.commit();
-  console.log("Data successfully uploaded to Firestore");
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      const doc = {
+        data: data[key],
+      };
+      try {
+        const response = await client.query(
+          q.Create(q.Collection("details"), doc),
+        );
+        console.log("Document created:", response.ref.id);
+      } catch (error) {
+        console.error("Error creating document:", error);
+      }
+    }
+  }
+  console.log("Data successfully uploaded to FaunaDB");
 };
 
 uploadData().catch((err) => {

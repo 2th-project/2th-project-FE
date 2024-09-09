@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 import Sidebar from "../../components/common/sidebar/Sidebar";
 
 const Detail = () => {
-  const { id } = useParams(); // URL에서 ID 파라미터 받아오기
+  const { id } = useParams(); 
   const [data, setData] = useState(null);
   const [activeTab1, setActiveTab1] = useState("지원 대상");
   const [activeTab2, setActiveTab2] = useState("주요 내용");
@@ -17,8 +17,7 @@ const Detail = () => {
     axios
       .get(`https://your-backend-domain.com/detail/${id}`)
       .then((response) => {
-        setData(response.data); // 데이터 받아오기
-      })
+        setData(response.data); 
       .catch((error) => console.error("Error fetching details:", error));
   }, [id]);
 
@@ -57,12 +56,12 @@ const Detail = () => {
         <div className={styles.mainContent}>
           <div className={styles.headerContent}>
             <h3>{data.title}</h3>
-            <p>{data.subtitle}</p> {/* 필요한 데이터 필드로 대체 */}
+            <p>{data.subtitle}</p> 
           </div>
           <div className={styles.infoBox}>
-            <h1>{data.serviceName}</h1> {/* 필요한 데이터 필드로 대체 */}
-            <p>{data.serviceSummary}</p> {/* 필요한 데이터 필드로 대체 */}
-            <p>{data.department}</p> {/* 필요한 데이터 필드로 대체 */}
+            <h1>{data.serviceName}</h1> 
+            <p>{data.serviceSummary}</p> 
+            <p>{data.department}</p> 
             <table className={styles.newTable}>
               <thead>
                 <tr>
@@ -104,25 +103,25 @@ const Detail = () => {
                 {activeTab1 === "지원 대상" && (
                   <tr>
                     <td colSpan="4">{data.eligibility}</td>{" "}
-                    {/* 필요한 데이터 필드로 대체 */}
+                    
                   </tr>
                 )}
                 {activeTab1 === "서비스 내용" && (
                   <tr>
                     <td colSpan="4">{data.serviceContents}</td>{" "}
-                    {/* 필요한 데이터 필드로 대체 */}
+                
                   </tr>
                 )}
                 {activeTab1 === "신청 방법" && (
                   <tr>
                     <td colSpan="4">{data.applicationMethod}</td>{" "}
-                    {/* 필요한 데이터 필드로 대체 */}
+                 
                   </tr>
                 )}
                 {activeTab1 === "추가 정보" && (
                   <tr>
                     <td colSpan="4">{data.additionalInfo}</td>{" "}
-                    {/* 필요한 데이터 필드로 대체 */}
+                    
                   </tr>
                 )}
               </tbody>
@@ -186,7 +185,6 @@ const Detail = () => {
                       <span className={styles.mainText}>
                         {data.mainContent}
                       </span>{" "}
-                      {/* 필요한 데이터 필드로 대체 */}
                       <span className={styles.subText}>상시신청</span>
                     </td>
                     <td className={styles.infoCell}>
@@ -345,7 +343,7 @@ const Detail = () => {
             </table>
           </div>
           <p>소관기관명 {data.departmentName}</p>{" "}
-          {/* 필요한 데이터 필드로 대체 */}
+
         </div>
       </div>
       <Footer />

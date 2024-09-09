@@ -1,25 +1,31 @@
 const express = require("express");
-const admin = require("firebase-admin");
-const serviceAccount = require("./path/to/serviceAccountKey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-});
-
-const db = admin.firestore();
+const faunadb = require("faunadb");
+const q = faunadb.query;
 const app = express();
+const port = 3001;
 
-// 상세 데이터를 제공하는 API 엔드포인트
-app.get("/detail/:id", async (req, res) => {
-  const doc = await db.collection("data").doc(req.params.id).get();
-  if (!doc.exists) {
-    return res.status(404).send("No such document!");
-  }
-  res.send(doc.data());
+const client = new faunadb.Client({
+  secret: "YOUR_FAUNADB_SECRET_KEY",
 });
 
-const port = 3001;
+app.get("/api/java/detail/:id", (req, res) => {
+  const { id } = req.params;
+  res.json({ title: `제목 ${id}`, summary: `간단 설명 ${id}` });
+});
+
+app.get("/api/node/detail/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await client.query(
+      q.Get(q.Ref(q.Collection("details"), id)),
+    );
+    res.json(result.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Failed to fetch data from FaunaDB");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
