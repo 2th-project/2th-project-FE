@@ -9,7 +9,6 @@ function PostList({ data, onTitleClick }) {
           <div className={styles.tableCell}>작성자</div>
           <div className={styles.tableCell}>제목</div>
           <div className={styles.tableCell}>게시날짜</div>
-          <div className={styles.tableCell}>조회수</div>
         </div>
       </div>
       <div className={styles.tableBody}>
@@ -24,7 +23,6 @@ function PostList({ data, onTitleClick }) {
               {post.title}
             </div>
             <div className={styles.tableCell}>{post.date}</div>
-            <div className={styles.tableCell}>{post.views}</div>
           </div>
         ))}
       </div>

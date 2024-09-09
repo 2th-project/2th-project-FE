@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Post.module.css";
 import Comment from "./../../components/community/Comment";
@@ -6,13 +6,20 @@ import Button from "./../../components/common/button/Button";
 
 function Post() {
   const location = useLocation();
-  const { title, content, userId, date, views } = location.state;
+  const navigate = useNavigate();
+  const { title, content, userId, date } = location.state;
 
   const [comments, setComments] = useState([
     { id: 1, userId: "user1", content: "첫 번째 댓글입니다." },
     { id: 2, userId: "user2", content: "두 번째 댓글입니다." },
     { id: 3, userId: "user3", content: "세 번째 댓글입니다." },
   ]);
+
+  const handleEditPost = () => {
+    navigate("/community/board/create", {
+      state: { title, content, isEdit: true },
+    });
+  };
 
   const handleAddComment = (newContent) => {
     const newComment = {
@@ -46,14 +53,14 @@ function Post() {
           <div>작성자: {userId}</div>
           <div className={styles.detailDivider}></div>
           <div>게시날짜: {date}</div>
-          <div className={styles.detailDivider}></div>
-          <div>조회수: {views}</div>
         </div>
         <div className={styles.postContent}>{content}</div>
       </div>
       <div className={styles.postBtnBox}>
         <div className={styles.postEditBtnBox}>
-          <Button type="submit">수정하기</Button>
+          <Button type="submit" onClick={handleEditPost}>
+            수정하기
+          </Button>
         </div>
         <div className={styles.postDeleteBtnBox}>
           <Button type="submit" className={styles.postDeleteBtn}>
