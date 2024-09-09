@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Sidebar from "../../components/common/sidebar/Sidebar";
 
-function Detail() {
+const Detail = () => {
   const [activeTab1, setActiveTab1] = useState("지원 대상");
   const [activeTab2, setActiveTab2] = useState("주요 내용");
 
@@ -30,14 +30,14 @@ function Detail() {
     <>
       <Header className={styles.headerTitle} />
       <div className={styles.layoutContainer}>
-        <div className={styles.sidebarWrapperCustom}>
+        <div className={styles.sidebarWrapper}>
           <Sidebar
             title="복지서비스 상세"
             items={sidebarItems}
             onItemClick={() => {}}
           />
         </div>
-        <div className={styles.container}>
+        <div className={styles.mainContent}>
           <div className={styles.headerContent}>
             <h3>복지서비스 상세</h3>
             <p>내 상황에 맞는 다양한 복지 서비스를 찾을 수 있습니다</p>
@@ -315,12 +315,9 @@ function Detail() {
           소관기관명 고용노동부
         </div>
       </div>
-      <br />
-      <br />
-      {/* 푸터와의 간격을 유지하기 위해 빈 줄 추가 */}
       <Footer />
     </>
   );
-}
+};
 
 export default Detail;
