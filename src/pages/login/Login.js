@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
 import OAuth from "../../components/sociallogin/OAuth";
+import { useRecoilState } from "recoil";
+import { authState } from "../../states/Auth";
 
 const API_URL = "";
 const Login = () => {
@@ -12,6 +14,8 @@ const Login = () => {
     newPassword: "",
     passwordCheck: "",
   });
+
+  const [auth, setAuth] = useRecoilState(authState);
 
   const openModal = () => {
     setIsOpen(true);
@@ -80,6 +84,11 @@ const Login = () => {
       const data = await response.json();
       const { token } = data;
       // const { accessToken,refreshToken } = data;
+
+      setAuth({
+        isLoggedIn: true,
+        token: token,
+      });
 
       localStorage.setItem("token", token);
       // localStorage.setItem("accessToken", accessToken);
