@@ -5,31 +5,26 @@
 
 .layoutContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 0;
   padding: 0;
 }
 
-.container {
-  margin: 2rem;
-  padding: 1rem;
-  max-width: 800px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  height: auto;
-  box-sizing: border-box;
-  overflow: hidden;
+.sidebarWrapper {
+  flex: 1;
+  min-width: 200px; /* 사이드바의 최소 너비 */
+  margin-right: 20px; /* 사이드바와 메인 콘텐츠의 간격 */
+}
+
+.mainContent {
+  flex: 3; /* 사이드바와 나머지 컨텐츠의 비율 */
+  padding-left: 20px; /* 사이드바와의 간격을 위해 패딩 추가 */
 }
 
 .headerTitle {
   margin: 0;
   padding: 0;
   text-align: left;
-}
-
-/* 새로운 클래스 추가 */
-.sidebarWrapperCustom {
-  margin-left: 16.5rem; /* 왼쪽 여백 추가하여 오른쪽으로 이동 */
 }
 
 .headerContent {
