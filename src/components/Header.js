@@ -11,7 +11,6 @@ const Header = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
-  //로그인 여부 확인
   const [auth, setAuth] = useRecoilState(authState);
   const isLoggedIn = useRecoilValue(authState).isLoggedIn;
 
@@ -106,6 +105,12 @@ const Header = () => {
         >
           소통광장
         </span>
+        <span
+          className={styles.navItem}
+          onClick={() => handleNavigate("/newslist")}
+        >
+          뉴스리스트
+        </span>{" "}
       </nav>
 
       <hr className={styles.divider02} />
