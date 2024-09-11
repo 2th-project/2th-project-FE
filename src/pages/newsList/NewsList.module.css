@@ -1,7 +1,5 @@
 .newsListContainer {
   padding: 20px;
-  max-width: 800px;
-  margin: auto;
 }
 
 .newsTable {
@@ -24,24 +22,21 @@
 .pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
 
 .pagination button {
-  padding: 5px 10px;
-  border: none;
+  margin: 0 5px;
+  padding: 10px 20px;
   background-color: #007bff;
   color: white;
+  border: none;
   cursor: pointer;
-  border-radius: 3px;
 }
 
-.pagination button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+.pagination button.active {
+  background-color: #0056b3;
 }
 
-.pagination span {
-  font-size: 16px;
+.pagination button:hover {
+  background-color: #0056b3;
 }

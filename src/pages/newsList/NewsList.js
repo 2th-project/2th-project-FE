@@ -6,6 +6,8 @@ import Footer from "../../components/Footer";
 
 const NewsList = () => {
   const [articles, setArticles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 50;
 
   useEffect(() => {
     const fetchCSV = async () => {
@@ -20,6 +22,25 @@ const NewsList = () => {
 
     fetchCSV();
   }, []);
+
+  // Calculate the articles to display on the current page
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle,
+  );
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Calculate page numbers for pagination
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(articles.length / articlesPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <>
@@ -36,7 +57,7 @@ const NewsList = () => {
             </tr>
           </thead>
           <tbody>
-            {articles.map((article) => (
+            {currentArticles.map((article) => (
               <tr key={article.id}>
                 <td>{article.id}</td>
                 <td>{article.title}</td>
@@ -54,8 +75,19 @@ const NewsList = () => {
             ))}
           </tbody>
         </table>
-        <Footer />
+        <div className={styles.pagination}>
+          {pageNumbers.map((number) => (
+            <button
+              key={number}
+              onClick={() => handlePageChange(number)}
+              className={currentPage === number ? styles.active : ""}
+            >
+              {number}
+            </button>
+          ))}
+        </div>
       </div>
+      <Footer />
     </>
   );
 };
