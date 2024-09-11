@@ -50,7 +50,7 @@ function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setConfirmDelete(null); // 모달을 닫을 때 삭제 확인 상태 초기화
+    setConfirmDelete(null);
   };
 
   return (

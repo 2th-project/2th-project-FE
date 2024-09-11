@@ -47,12 +47,14 @@
   display: flex;
   justify-content: start;
   align-items: center;
+  padding: 0 10px;
 }
 
 .commentUser {
   font-weight: bold;
   text-align: center;
   color: var(--text-color1);
+  margin-right: 10px;
 }
 
 .commentDate {
@@ -60,7 +62,7 @@
 }
 
 .commentContent {
-  flex-grow: 1;
+  padding: 20px;
 }
 
 .commentBtnBox {
