@@ -100,4 +100,88 @@ function Post() {
   );
 }
 
-export default Post;
+// export default Post;
+
+// import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import styles from "./BulletinBoard.module.css";
+// import PostList from "../../components/community/postList/PostList";
+// import Search from "../../components/community/Search";
+// import Button from "../../components/common/button/Button";
+// import Pagination from "./../../components/common/pagination/Pagination";
+
+// function BulletinBoard() {
+//   const navigate = useNavigate();
+//   const [posts, setPosts] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [totalPages, setTotalPages] = useState(1);
+//   const postsPerPage = 10;
+
+//   // Fetch posts based on current page, type, and keyword
+//   const fetchPosts = async (page = 1, type = "t", keyword = "") => {
+//     try {
+//       const response = await axios.get(
+//         `http://localhost:8080/api/question/list?page=${page}&size=${postsPerPage}&type=${type}&keyword=${keyword}`
+//       );
+
+//       if (response.data.code === 200) {
+//         setPosts(response.data.data.dtoList);
+//         setTotalPages(response.data.data.totalPage);
+//       } else {
+//         console.error("Failed to fetch posts:", response.data.message);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching posts:", error);
+//     }
+//   };
+
+//   // Fetch posts when component mounts and when currentPage changes
+//   useEffect(() => {
+//     fetchPosts(currentPage);
+//   }, [currentPage]);
+
+//   // Handle search
+//   const handleSearch = (term, type) => {
+//     setCurrentPage(1); // Reset to first page after search
+//     fetchPosts(1, type, term);
+//   };
+
+//   // Handle post click
+//   const handleTitleClick = (post) => {
+//     navigate(`/community/board/post`, { state: post });
+//   };
+
+//   // Handle post writing
+//   const handleWriteClick = () => {
+//     navigate("/community/board/create");
+//   };
+
+//   return (
+//     <div>
+//       <Search className={styles.searchBox} onSearch={handleSearch} />
+//       <div className={styles.totalPosts}>
+//         <img src="/assets/ico_docu.png" alt="board" />
+//         전체 {posts.length}건 ({currentPage} / {totalPages} 페이지)
+//       </div>
+//       <PostList data={posts} onTitleClick={handleTitleClick} />
+//       <div className={styles.buttonContainer}>
+//         <Button
+//           type="button"
+//           className={styles.writeBtn}
+//           onClick={handleWriteClick}
+//         >
+//           게시글 작성
+//         </Button>
+//       </div>
+//       <Pagination
+//         totalPosts={posts.length}
+//         postsPerPage={postsPerPage}
+//         currentPage={currentPage}
+//         setCurrentPage={setCurrentPage}
+//       />
+//     </div>
+//   );
+// }
+
+// export default BulletinBoard;
