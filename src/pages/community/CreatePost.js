@@ -11,23 +11,19 @@ function CreatePost() {
   const [title, setTitle] = useState(state?.title || "");
   const [content, setContent] = useState(state?.content || "");
 
-  // content를 초기화하는 로직을 useEffect에서 좀 더 간결하게 처리
   useEffect(() => {
     if (isEdit) {
       setContent(state?.content || "");
     }
   }, [isEdit, state?.content]);
 
-  // 제목과 내용의 변경을 핸들링하는 인라인 함수
   const handleSubmit = (e) => {
     e.preventDefault();
     const action = isEdit ? "Updated" : "New";
     console.log(`${action} Post - Title:`, title);
     console.log(`${action} Post - Content:`, content);
-    // 이후 서버에 post 또는 put 요청 로직을 추가
   };
 
-  // 툴바에서 이미지 관련 버튼을 삭제하고 텍스트 편집만 가능하게 설정
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }, { font: [] }],

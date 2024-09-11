@@ -50,7 +50,7 @@ function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setConfirmDelete(null); // 모달을 닫을 때 삭제 확인 상태 초기화
+    setConfirmDelete(null);
   };
 
   return (
@@ -69,52 +69,57 @@ function Comment({ comments, onAddComment, onEditComment, onDeleteComment }) {
       </div>
 
       {comments.map((comment) => (
-        <div key={comment.id} className={styles.commentItem}>
-          <div className={styles.commentUser}>{comment.userId}</div>
-
-          {editMode === comment.id ? (
-            <textarea
-              className={styles.commentTextarea}
-              value={editContent}
-              onChange={(e) => setEditContent(e.target.value)}
-              rows={3}
-            />
-          ) : (
-            <div className={styles.commentContent}>{comment.content}</div>
-          )}
-
-          {editMode === comment.id ? (
-            <>
-              <button
-                className={styles.commentSaveBtn}
-                onClick={() => handleSaveClick(comment.id)}
-              >
-                저장
-              </button>
-              <div className={styles.divider}></div>
-              <button
-                className={styles.commentCancelBtn}
-                onClick={handleCancelClick}
-              >
-                취소
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                className={styles.commentEditBtn}
-                onClick={() => handleEditClick(comment)}
-              >
-                수정
-              </button>
-              <button
-                className={styles.commentDeleteBtn}
-                onClick={() => handleDeleteClick(comment.id)}
-              >
-                삭제
-              </button>
-            </>
-          )}
+        <div key={comment.id} className={styles.commentItemBox}>
+          <div className={styles.commentItem}>
+            <div className={styles.commentInfo}>
+              <div className={styles.commentUser}>{comment.userId}</div>
+              <div className={styles.commentDate}>{comment.date}</div>
+            </div>
+            {editMode === comment.id ? (
+              <textarea
+                className={styles.commentTextarea}
+                value={editContent}
+                onChange={(e) => setEditContent(e.target.value)}
+                rows={3}
+              />
+            ) : (
+              <div className={styles.commentContent}>{comment.content}</div>
+            )}
+          </div>
+          <div className={styles.commentBtnBox}>
+            {editMode === comment.id ? (
+              <>
+                <button
+                  className={styles.commentSaveBtn}
+                  onClick={() => handleSaveClick(comment.id)}
+                >
+                  저장
+                </button>
+                <div className={styles.divider}></div>
+                <button
+                  className={styles.commentCancelBtn}
+                  onClick={handleCancelClick}
+                >
+                  취소
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className={styles.commentEditBtn}
+                  onClick={() => handleEditClick(comment)}
+                >
+                  수정
+                </button>
+                <button
+                  className={styles.commentDeleteBtn}
+                  onClick={() => handleDeleteClick(comment.id)}
+                >
+                  삭제
+                </button>
+              </>
+            )}
+          </div>
         </div>
       ))}
       {showModal && (
