@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { authState } from "../states/Auth";
 
 const Header = () => {
   const location = useLocation();
@@ -8,6 +10,10 @@ const Header = () => {
   const isMainPage = location.pathname === "/";
 
   const [isScrolled, setIsScrolled] = useState(false);
+
+  //로그인 여부 확인
+  const [auth, setAuth] = useRecoilState(authState);
+  const isLoggedIn = useRecoilValue(authState).isLoggedIn;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +30,15 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  //로그아웃
+  const handleLogout = () => {
+    setAuth({
+      isLoggedIn: false,
+      token: "",
+    });
+    localStorage.removeItem("token");
+  };
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -64,12 +79,18 @@ const Header = () => {
           >
             회원가입
           </span>
-          <span
-            className={styles.userMenuItem}
-            onClick={() => handleNavigate("/login")}
-          >
-            로그인
-          </span>
+          {isLoggedIn ? (
+            <span className={styles.userMenuItem} onClick={handleLogout}>
+              로그아웃
+            </span>
+          ) : (
+            <span
+              className={styles.userMenuItem}
+              onClick={() => handleNavigate("/login")}
+            >
+              로그인
+            </span>
+          )}
         </div>
       </div>
 

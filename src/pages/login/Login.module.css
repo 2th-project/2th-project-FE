@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  /* background-color: #dfeafffa; */
+  height: 500px;
+  margin: 40px 0;
 }
+
 .loginBox {
   display: flex;
   flex-direction: column;
@@ -51,7 +52,7 @@
   padding: 5px 10px;
 }
 
-.loninButton {
+.loginButton {
   background-color: #adcff2;
   width: 320px;
   height: 40px;
@@ -63,7 +64,7 @@
 }
 
 .findPassword {
-  width: 100px;
+  width: 110px;
   background-color: transparent;
   align-items: center;
   border: none;
