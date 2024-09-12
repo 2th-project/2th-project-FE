@@ -8,17 +8,24 @@ const NewsList = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true); // 로딩 상태 추가
   const articlesPerPage = 50;
 
   useEffect(() => {
     const fetchCSV = async () => {
-      const response = await fetch("/news.csv");
-      const reader = response.body.getReader();
-      const result = await reader.read();
-      const decoder = new TextDecoder("utf-8");
-      const csv = decoder.decode(result.value);
-      const results = Papa.parse(csv, { header: true });
-      setArticles(results.data);
+      try {
+        const response = await fetch("/news.csv");
+        const reader = response.body.getReader();
+        const result = await reader.read(); // raw array
+        const decoder = new TextDecoder("utf-8");
+        const csv = decoder.decode(result.value); // the csv text
+        const results = Papa.parse(csv, { header: true }); // object with { data, errors, meta }
+        setArticles(results.data);
+      } catch (error) {
+        console.error("Error fetching the CSV data:", error);
+      } finally {
+        setLoading(false); // 데이터 로드 완료
+      }
     };
 
     fetchCSV();
@@ -26,13 +33,16 @@ const NewsList = () => {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
-    setCurrentPage(1);
+    setCurrentPage(1); // 검색어 입력 시 첫 페이지로 이동
   };
 
-  const filteredArticles = articles.filter((article) =>
-    article.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredArticles = articles.filter(
+    (article) =>
+      article.title &&
+      article.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
+  // Calculate the articles to display on the current page
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
   const currentArticles = filteredArticles.slice(
@@ -40,10 +50,12 @@ const NewsList = () => {
     indexOfLastArticle,
   );
 
+  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  // Calculate page numbers for pagination
   const pageNumbers = [];
   for (
     let i = 1;
@@ -51,6 +63,10 @@ const NewsList = () => {
     i++
   ) {
     pageNumbers.push(i);
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -78,7 +94,7 @@ const NewsList = () => {
             {currentArticles.map((article) => (
               <tr key={article.id}>
                 <td>{article.id}</td>
-                <td>{article.title}</td>
+                <td>{article.title || "N/A"}</td>
                 <td>
                   <a
                     href={article.link}
@@ -88,7 +104,11 @@ const NewsList = () => {
                     View
                   </a>
                 </td>
-                <td>{new Date(article.created_at).toLocaleDateString()}</td>
+                <td>
+                  {article.created_at
+                    ? new Date(article.created_at).toLocaleDateString()
+                    : "N/A"}
+                </td>
               </tr>
             ))}
           </tbody>
