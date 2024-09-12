@@ -13,7 +13,7 @@ const Modal = ({ message, onClose }) => {
         </div>
       </div>
     </div>,
-    document.getElementById("modal-root")
+    document.getElementById("modal-root"),
   );
 };
 

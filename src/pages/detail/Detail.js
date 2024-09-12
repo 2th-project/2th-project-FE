@@ -7,20 +7,35 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Sidebar from "../../components/common/sidebar/Sidebar";
 
+const mockData = {
+  id: 1,
+  service_name: "예제 서비스",
+  service_purpose_summary: "서비스 서머리.",
+  likeCount: 120,
+  dislikeCount: 10,
+  comments: [
+    { id: 1, text: "좀더 개선이 필요해요!" },
+    { id: 2, text: "솔직히 별로에요." },
+  ],
+};
+
 const Detail = () => {
   const { id } = useParams();
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true); // loading 상태 추가
+  const [data, setData] = useState(mockData);
+  const [loading, setLoading] = useState(true);
+  const [likeCount, setLikeCount] = useState(mockData.likeCount);
+  const [dislikeCount, setDislikeCount] = useState(mockData.dislikeCount);
+  const [comments, setComments] = useState(mockData.comments);
+  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/test/details/${id}`);
-        setData(response.data[0]);
+        setData(mockData);
       } catch (error) {
         console.error("Error fetching details:", error);
       } finally {
-        setLoading(false); // 데이터 로드 후 loading 상태 false로 변경
+        setLoading(false);
       }
     };
     fetchData();
@@ -29,6 +44,30 @@ const Detail = () => {
   const handleButtonClick = () => {
     window.location.href =
       "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/149200000026";
+  };
+
+  const handleLike = () => {
+    setLikeCount(likeCount + 1);
+  };
+
+  const handleDislike = () => {
+    setDislikeCount(dislikeCount + 1);
+  };
+
+  const handleCommentChange = (event) => {
+    setNewComment(event.target.value);
+  };
+
+  const handleCommentSubmit = (event) => {
+    event.preventDefault();
+    if (newComment.trim()) {
+      const updatedComments = [
+        ...comments,
+        { id: comments.length + 1, text: newComment },
+      ];
+      setComments(updatedComments);
+      setNewComment("");
+    }
   };
 
   return (
@@ -47,7 +86,6 @@ const Detail = () => {
         </div>
         <div className={styles.mainContent}>
           {loading ? (
-            // 최소한의 UI를 로드할 때도 보여줌
             <p>Loading...</p>
           ) : (
             <>
@@ -66,6 +104,46 @@ const Detail = () => {
                 >
                   신청하기
                 </Button>
+              </div>
+              <div className={styles.reactions}>
+                <button onClick={handleLike} className={styles.likeButton}>
+                  좋아요 ({likeCount})
+                </button>
+                <button
+                  onClick={handleDislike}
+                  className={styles.dislikeButton}
+                >
+                  싫어요 ({dislikeCount})
+                </button>
+              </div>
+              <div className={styles.commentsSection}>
+                <h2>의견</h2>
+                <ul className={styles.commentsList}>
+                  {comments.map((comment) => (
+                    <li key={comment.id} className={styles.commentItem}>
+                      {comment.text}
+                    </li>
+                  ))}
+                </ul>
+                <div className={styles.commentFormContainer}>
+                  <form
+                    onSubmit={handleCommentSubmit}
+                    className={styles.commentForm}
+                  >
+                    <textarea
+                      value={newComment}
+                      onChange={handleCommentChange}
+                      placeholder="의견을 작성하세요"
+                      className={styles.commentInput}
+                    ></textarea>
+                    <button
+                      type="submit"
+                      className={styles.commentSubmitButton}
+                    >
+                      제출
+                    </button>
+                  </form>
+                </div>
               </div>
             </>
           )}
