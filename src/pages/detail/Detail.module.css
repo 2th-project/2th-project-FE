@@ -10,6 +10,15 @@
   flex-wrap: nowrap;
   margin: 0;
   padding: 0;
+  justify-content: center; /* Centering the content */
+}
+
+.contentContainer {
+  width: 1280px;       /* Set width to 1280px */
+  height: 1047px;      /* Set height to 1047px */
+  display: flex;
+  margin: 0 auto;      /* Center the container horizontally */
+  padding-bottom: 150px; /* Add padding to ensure content doesn't invade footer */
 }
 
 .sidebarWrapper {
@@ -21,12 +30,16 @@
 .mainContent {
   flex: 3;
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Aligning the main content to the center */
+  width: 955px;
 }
 
 .headerTitle {
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .headerContent {
@@ -35,6 +48,7 @@
   box-sizing: border-box;
   margin: 0;
   margin-bottom: 2rem;
+  text-align: center; /* Centralize text horizontally */
 }
 
 .infoBox {
@@ -43,6 +57,8 @@
   padding: 20px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  margin-bottom: 30px; /* Ensure there's enough space at the bottom */
+  text-align: center; /* Centralize text horizontally */
 }
 
 .newTable {
@@ -50,6 +66,8 @@
   margin-bottom: 10px;
   table-layout: fixed;
   border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .newTable th,
@@ -71,12 +89,15 @@
   table-layout: fixed;
   border-collapse: collapse;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .infoTable th,
 .infoTable td {
   padding: 10px;
   border: 1px solid #ddd;
+  text-align: center;
 }
 
 .infoTable th {
@@ -139,6 +160,8 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .table th,
@@ -223,18 +246,12 @@ th {
 }
 
 .footer {
-  margin-top: 20px;
+  margin-top: 50px; /* Ensure space between footer and content */
 }
 
 .detailPageContainer {
   padding: 20px;
-}
-
-.infoBox {
-  width: 100%;
-  padding: 20px;
-  border: 1px solid #ccc;
-  margin-bottom: 30px;
+  text-align: center; /* Centralize text horizontally */
 }
 
 .reactions {
@@ -266,13 +283,16 @@ th {
 }
 
 .commentsSection {
+  width: 100%; /* Ensure comments section expands full width */
   margin-top: 40px;
+  margin-bottom: 100px; /* Add larger margin to avoid collision with footer */
 }
 
 .commentsList {
   list-style-type: none;
   padding: 0;
   border-top: 1px solid #ddd;
+  width: 100%; /* Ensure comments list uses full width */
 }
 
 .commentItem {
@@ -280,24 +300,28 @@ th {
   border-bottom: 1px solid #ddd;
 }
 
+/* Flex container for the comment input and submit button */
 .commentFormContainer {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 20px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; /* Ensure full width */
 }
 
 .commentForm {
   width: 100%;
   max-width: 600px;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center items vertically */
 }
 
 .commentInput {
-  width: 100%;
+  flex-grow: 1; /* Take remaining space */
   padding: 10px;
-  margin-bottom: 10px;
+  margin-right: 10px; /* Add margin to the right of the textarea */
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -309,9 +333,13 @@ th {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  align-self: flex-end;
 }
 
 .commentSubmitButton:hover {
   background-color: #0056b3;
+}
+
+.commentSubmitButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
