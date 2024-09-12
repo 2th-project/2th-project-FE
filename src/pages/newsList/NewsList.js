@@ -7,38 +7,49 @@ import Footer from "../../components/Footer";
 const NewsList = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   const articlesPerPage = 50;
 
   useEffect(() => {
     const fetchCSV = async () => {
       const response = await fetch("/news.csv");
       const reader = response.body.getReader();
-      const result = await reader.read(); // raw array
+      const result = await reader.read();
       const decoder = new TextDecoder("utf-8");
-      const csv = decoder.decode(result.value); // the csv text
-      const results = Papa.parse(csv, { header: true }); // object with { data, errors, meta }
+      const csv = decoder.decode(result.value);
+      const results = Papa.parse(csv, { header: true });
       setArticles(results.data);
     };
 
     fetchCSV();
   }, []);
 
-  // Calculate the articles to display on the current page
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const filteredArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(
+  const currentArticles = filteredArticles.slice(
     indexOfFirstArticle,
     indexOfLastArticle,
   );
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Calculate page numbers for pagination
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(articles.length / articlesPerPage); i++) {
+  for (
+    let i = 1;
+    i <= Math.ceil(filteredArticles.length / articlesPerPage);
+    i++
+  ) {
     pageNumbers.push(i);
   }
 
@@ -47,6 +58,13 @@ const NewsList = () => {
       <Header />
       <div className={styles.newsListContainer}>
         <h1>뉴스리스트</h1>
+        <input
+          type="text"
+          placeholder="검색어를 입력하세요"
+          value={searchTerm}
+          onChange={handleSearch}
+          className={styles.searchBar}
+        />
         <table className={styles.newsTable}>
           <thead>
             <tr>
