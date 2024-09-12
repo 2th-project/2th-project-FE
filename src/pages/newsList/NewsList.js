@@ -3,13 +3,15 @@ import Papa from "papaparse";
 import styles from "./NewsList.module.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Pagination from "../../components/common/pagination/Pagination"; // Import existing Pagination component
+
+const PAGE_SIZE = 50; // Set number of articles per page
 
 const NewsList = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true); // 로딩 상태 추가
-  const articlesPerPage = 50;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCSV = async () => {
@@ -24,7 +26,7 @@ const NewsList = () => {
       } catch (error) {
         console.error("Error fetching the CSV data:", error);
       } finally {
-        setLoading(false); // 데이터 로드 완료
+        setLoading(false);
       }
     };
 
@@ -33,7 +35,7 @@ const NewsList = () => {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
-    setCurrentPage(1); // 검색어 입력 시 첫 페이지로 이동
+    setCurrentPage(1); // Reset to first page on search
   };
 
   const filteredArticles = articles.filter(
@@ -42,32 +44,13 @@ const NewsList = () => {
       article.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  // Calculate the articles to display on the current page
-  const indexOfLastArticle = currentPage * articlesPerPage;
-  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  // Calculate the current articles to display based on pagination
+  const indexOfLastArticle = currentPage * PAGE_SIZE;
+  const indexOfFirstArticle = indexOfLastArticle - PAGE_SIZE;
   const currentArticles = filteredArticles.slice(
     indexOfFirstArticle,
     indexOfLastArticle,
   );
-
-  // Handle page change
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  // Calculate page numbers for pagination
-  const pageNumbers = [];
-  for (
-    let i = 1;
-    i <= Math.ceil(filteredArticles.length / articlesPerPage);
-    i++
-  ) {
-    pageNumbers.push(i);
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
@@ -113,17 +96,12 @@ const NewsList = () => {
             ))}
           </tbody>
         </table>
-        <div className={styles.pagination}>
-          {pageNumbers.map((number) => (
-            <button
-              key={number}
-              onClick={() => handlePageChange(number)}
-              className={currentPage === number ? styles.active : ""}
-            >
-              {number}
-            </button>
-          ))}
-        </div>
+        <Pagination
+          totalPosts={filteredArticles.length}
+          postsPerPage={PAGE_SIZE}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <Footer />
     </>
